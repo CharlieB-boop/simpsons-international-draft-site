@@ -317,38 +317,45 @@ footer{background:var(--navy-deep);padding:clamp(3.5rem,6vw,5rem) clamp(1.25rem,
   .callback-toggle span{display:none}.callback-toggle{padding:15px;border-radius:50%}
 }
 
-/* Mobile navigation drawer */
+/* Mobile navigation — full-page takeover */
 .hamburger span{transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .25s ease,background .3s ease}
 .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mnav-overlay{position:fixed;inset:0;background:rgba(10,14,30,0.45);opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s;z-index:1150}
-.mnav-overlay.open{opacity:1;visibility:visible}
-.mnav{position:fixed;top:0;right:0;bottom:0;width:min(88vw,400px);z-index:1200;background:rgba(18,26,52,0.94);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border-left:1px solid rgba(191,161,95,0.22);box-shadow:-30px 0 70px -20px rgba(0,0,0,0.55);transform:translateX(100%);transition:transform .45s cubic-bezier(.33,0,.2,1);display:flex;flex-direction:column;overflow:hidden}
+.mnav{position:fixed;inset:0;z-index:1200;background:linear-gradient(180deg,rgba(20,29,59,0.97),rgba(15,21,45,0.98));backdrop-filter:blur(26px) saturate(160%);-webkit-backdrop-filter:blur(26px) saturate(160%);transform:translateX(100%);transition:transform .5s cubic-bezier(.33,0,.2,1);display:flex;flex-direction:column;overflow:hidden}
 .mnav.open{transform:translateX(0)}
-.mnav-top{display:flex;align-items:center;justify-content:space-between;padding:22px clamp(1.25rem,5vw,2rem);border-bottom:1px solid rgba(191,161,95,0.18);flex-shrink:0}
-.mnav-brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;text-decoration:none;letter-spacing:0.02em}
-.mnav-close{background:none;border:none;cursor:pointer;padding:6px;color:#fff}
-.mnav-close svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.6}
-.mnav-links{flex:1;overflow-y:auto;padding:10px clamp(1.25rem,5vw,2rem) 20px;-webkit-overflow-scrolling:touch}
+.mnav-top{display:flex;align-items:center;justify-content:space-between;padding:20px clamp(1.25rem,5vw,2.5rem);flex-shrink:0}
+.mnav-brand{display:flex;align-items:center;text-decoration:none}
+.mnav-brand img{height:36px;width:auto;display:block}
+.mnav-close{background:none;border:1px solid rgba(255,255,255,0.22);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;flex-shrink:0}
+.mnav-close svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:1.5}
+.mnav-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:4px clamp(1.25rem,5vw,2.5rem) 24px;display:flex;flex-direction:column}
+.mnav-inner{width:100%;max-width:520px;margin:0 auto}
+.mnav-phone{display:block;padding:20px 2px 28px;border-bottom:1px solid rgba(191,161,95,0.2);text-decoration:none}
+.mnav-phone-label{display:block;font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:10px}
+.mnav-phone-num{display:flex;align-items:center;gap:12px;font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,7vw,2.3rem);color:#fff;font-weight:400;letter-spacing:0.01em}
+.mnav-phone-num svg{width:18px;height:18px;stroke:var(--gold-bright);fill:none;stroke-width:1.5;flex-shrink:0}
+.mnav-links{margin-top:6px}
 .mnav-item{border-bottom:1px solid rgba(255,255,255,0.08)}
-.mnav-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;background:none;border:none;color:#fff;text-align:left;padding:17px 2px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:400;letter-spacing:0.03em;cursor:pointer}
-.mnav-chev{width:14px;height:14px;stroke:var(--gold-bright);fill:none;stroke-width:2;transition:transform .35s ease;flex-shrink:0}
+.mnav-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;background:none;border:none;color:#fff;text-align:left;padding:22px 2px;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;letter-spacing:0.01em;cursor:pointer}
+.mnav-chev{width:15px;height:15px;stroke:var(--gold-bright);fill:none;stroke-width:2;transition:transform .35s ease;flex-shrink:0}
 .mnav-toggle[aria-expanded="true"] .mnav-chev{transform:rotate(180deg)}
 .mnav-panel{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.mnav-panel-inner{padding:2px 0 16px}
-.mnav-rlabel{display:block;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.42);margin:14px 0 6px}
-.mnav-panel a{display:block;padding:8px 2px;color:rgba(255,255,255,0.75);text-decoration:none;font-family:'Cormorant Garamond',serif;font-size:1.05rem}
+.mnav-panel-inner{padding:2px 0 18px}
+.mnav-rlabel{display:block;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.42);margin:16px 0 6px}
+.mnav-panel a{display:block;padding:9px 2px;color:rgba(255,255,255,0.72);text-decoration:none;font-family:'Cormorant Garamond',serif;font-size:1.1rem}
 .mnav-panel a:active,.mnav-panel a:hover{color:var(--gold-bright)}
-.mnav-link{display:block;padding:17px 2px;color:#fff;text-decoration:none;font-family:'Poppins',sans-serif;font-size:14px;letter-spacing:0.03em}
-.mnav-cta{display:block;text-align:center;margin:18px 2px 6px;padding:14px;background:var(--gold);color:var(--navy-deep)!important;border-radius:50px;text-decoration:none;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase}
-.mnav-foot{flex-shrink:0;padding:18px clamp(1.25rem,5vw,2rem) 26px;border-top:1px solid rgba(191,161,95,0.18)}
-.mnav-contact{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.75);text-decoration:none;font-size:12.5px;padding:7px 0;font-family:'Poppins',sans-serif}
-.mnav-contact svg{width:15px;height:15px;stroke:var(--gold-bright);fill:none;stroke-width:1.6;flex-shrink:0}
-.mnav-tp{margin-top:8px;color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:0.02em}
-.mnav-tp-stars{color:#00b67a;letter-spacing:1px;margin-right:4px}
+.mnav-link{display:block;padding:22px 2px;color:#fff;text-decoration:none;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,0.08)}
+.mnav-cta{display:block;text-align:center;margin:26px 0 6px;padding:17px;background:var(--gold);color:var(--navy-deep)!important;border-radius:50px;text-decoration:none;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase}
+.mnav-foot{flex-shrink:0;padding:18px clamp(1.25rem,5vw,2.5rem) 30px;border-top:1px solid rgba(191,161,95,0.18)}
+.mnav-foot-inner{width:100%;max-width:520px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 20px}
+.mnav-contact{display:flex;align-items:center;gap:9px;color:rgba(255,255,255,0.72);text-decoration:none;font-size:12px;font-family:'Poppins',sans-serif}
+.mnav-contact svg{width:14px;height:14px;stroke:var(--gold-bright);fill:none;stroke-width:1.6;flex-shrink:0}
+.mnav-tp{display:flex;align-items:center;color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:0.02em;font-family:'Poppins',sans-serif}
+.mnav-tp-stars{color:#00b67a;letter-spacing:1px;margin-right:6px}
 body.mnav-locked{overflow:hidden}
-@media(min-width:769px){.mnav,.mnav-overlay{display:none}}
+@media(min-width:769px){.mnav{display:none}}
+
 
 .hero-min{align-items:center;text-align:center}
 .hero-min .hero-overlay{background:linear-gradient(to bottom,rgba(15,21,45,0.55) 0%,rgba(15,21,45,0.3) 38%,rgba(15,21,45,0.5) 100%),radial-gradient(ellipse at center,transparent 28%,rgba(15,21,45,0.42) 100%)}
@@ -476,32 +483,40 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
   <div class="hero-overlay"></div>
   <div class="hero-min-inner"><h1>Specialist International Removals for <em>Life&rsquo;s Bigger Moves</em></h1><p class="mini-sub">A personal, carefully managed removals service for families and individuals moving overseas from the UK</p><div class="mini-form"><div class='msel' data-role='from'><button type='button' class='msel-btn'><span class='msel-val'>Moving from</span><svg class='msel-chev' viewBox='0 0 24 24'><polyline points='6 9 12 15 18 9'/></svg></button><div class='msel-menu'><div class='msel-opt' data-v='Outside the UK'>Outside the UK<span class='msel-sub'>via our partner network</span></div><div class='msel-grp'>United Kingdom</div><div class='msel-opt'>London</div><div class='msel-opt'>Manchester</div><div class='msel-opt'>Birmingham</div><div class='msel-opt'>Leeds</div><div class='msel-opt'>Bristol</div><div class='msel-opt'>Liverpool</div><div class='msel-opt'>Glasgow</div><div class='msel-opt'>Edinburgh</div><div class='msel-opt'>Cardiff</div><div class='msel-opt'>Newcastle upon Tyne</div><div class='msel-opt'>Nottingham</div><div class='msel-opt'>Sheffield</div><div class='msel-opt'>Southampton</div><div class='msel-opt'>Brighton</div><div class='msel-opt'>Other UK location</div></div></div><div class="divider"></div><div class='msel' data-role='to'><button type='button' class='msel-btn'><span class='msel-val'>Moving to</span><svg class='msel-chev' viewBox='0 0 24 24'><polyline points='6 9 12 15 18 9'/></svg></button><div class='msel-menu'><div class='msel-grp'>United Kingdom</div><div class='msel-opt'>United Kingdom</div><div class='msel-grp'>Worldwide</div><div class='msel-opt'>Australia</div><div class='msel-opt'>New Zealand</div><div class='msel-opt'>Canada</div><div class='msel-opt'>USA</div><div class='msel-opt'>South Africa</div><div class='msel-opt'>Singapore</div><div class='msel-opt'>UAE / Dubai</div><div class='msel-opt'>China</div><div class='msel-opt'>Hong Kong</div><div class='msel-opt'>India</div><div class='msel-opt'>Philippines</div><div class='msel-opt'>Qatar</div><div class='msel-opt'>Thailand</div><div class='msel-grp'>Europe</div><div class='msel-opt'>Austria</div><div class='msel-opt'>Balearic Islands</div><div class='msel-opt'>Belgium</div><div class='msel-opt'>Canary Islands</div><div class='msel-opt'>Cyprus</div><div class='msel-opt'>Denmark</div><div class='msel-opt'>France</div><div class='msel-opt'>Germany</div><div class='msel-opt'>Greece</div><div class='msel-opt'>Ireland</div><div class='msel-opt'>Italy</div><div class='msel-opt'>Luxembourg</div><div class='msel-opt'>Malta</div><div class='msel-opt'>Netherlands</div><div class='msel-opt'>Norway</div><div class='msel-opt'>Portugal</div><div class='msel-opt'>Spain</div><div class='msel-opt'>Sweden</div><div class='msel-opt'>Switzerland</div></div></div><button class="mini-continue">Continue <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div></div><a class="scroll-cue" href="#after-hero"><span>Scroll</span><div class="line"></div></a></header>
 
-<div class="mnav-overlay" id="mnavOverlay"></div>
 <aside class="mnav" id="mobile-nav" aria-hidden="true">
   <div class="mnav-top">
-    <a href="index.html" class="mnav-brand">Simpsons</a>
+    <a href="index.html" class="mnav-brand" id="mnavBrand"></a>
     <button class="mnav-close" id="mnavClose" aria-label="Close menu"><svg viewBox="0 0 24 24"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
   </div>
-  <nav class="mnav-links">
-    <div class="mnav-item">
-      <button class="mnav-toggle" data-target="mnavIntl" aria-expanded="false">International Removals<svg class="mnav-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="mnav-panel" id="mnavIntl" data-source="mega-intl"><div class="mnav-panel-inner"></div></div>
+  <div class="mnav-body">
+    <div class="mnav-inner">
+      <a href="tel:01322949557" class="mnav-phone">
+        <span class="mnav-phone-label">Call our team</span>
+        <span class="mnav-phone-num">01322 949 557<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+      <nav class="mnav-links">
+        <div class="mnav-item">
+          <button class="mnav-toggle" data-target="mnavIntl" aria-expanded="false">International Removals<svg class="mnav-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="mnav-panel" id="mnavIntl" data-source="mega-intl"><div class="mnav-panel-inner"></div></div>
+        </div>
+        <div class="mnav-item">
+          <button class="mnav-toggle" data-target="mnavEuro" aria-expanded="false">European Removals<svg class="mnav-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="mnav-panel" id="mnavEuro" data-source="mega-euro"><div class="mnav-panel-inner"></div></div>
+        </div>
+        <div class="mnav-item">
+          <button class="mnav-toggle" data-target="mnavOther" aria-expanded="false">Other Services<svg class="mnav-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="mnav-panel" id="mnavOther" data-source="mega-other"><div class="mnav-panel-inner"></div></div>
+        </div>
+        <a href="why-choose-us.html" class="mnav-link">Why Choose Us</a>
+        <a href="quote.html" class="mnav-cta">Get a Quote</a>
+      </nav>
     </div>
-    <div class="mnav-item">
-      <button class="mnav-toggle" data-target="mnavEuro" aria-expanded="false">European Removals<svg class="mnav-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="mnav-panel" id="mnavEuro" data-source="mega-euro"><div class="mnav-panel-inner"></div></div>
-    </div>
-    <div class="mnav-item">
-      <button class="mnav-toggle" data-target="mnavOther" aria-expanded="false">Other Services<svg class="mnav-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="mnav-panel" id="mnavOther" data-source="mega-other"><div class="mnav-panel-inner"></div></div>
-    </div>
-    <a href="why-choose-us.html" class="mnav-link">Why Choose Us</a>
-    <a href="quote.html" class="mnav-cta">Get a Quote</a>
-  </nav>
+  </div>
   <div class="mnav-foot">
-    <a href="tel:01322949557" class="mnav-contact"><svg viewBox="0 0 24 24"><path d="M6 4h3l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v3a2 2 0 01-2 2A14 14 0 014 6a2 2 0 012-2z"/></svg>01322 949 557</a>
-    <a href="mailto:info@simpsons-uk.com" class="mnav-contact"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>info@simpsons-uk.com</a>
-    <div class="mnav-tp"><span class="mnav-tp-stars">★★★★★</span>Excellent · 4.8 / 5 Trustpilot</div>
+    <div class="mnav-foot-inner">
+      <a href="mailto:info@simpsons-uk.com" class="mnav-contact"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>info@simpsons-uk.com</a>
+      <div class="mnav-tp"><span class="mnav-tp-stars">★★★★★</span>Excellent · 4.8 / 5 Trustpilot</div>
+    </div>
   </div>
 </aside>
 
@@ -647,13 +662,16 @@ function syncCue(){document.body.classList.toggle('msel-open',!!document.querySe
 const miniCont=document.querySelector('.mini-continue');
 if(miniCont)miniCont.addEventListener('click',()=>{window.location.href='quote.html'});
 
-/* Mobile navigation drawer */
+/* Mobile navigation — full-page takeover */
 (function(){
   const hamburger=document.getElementById('hamburger');
   const mnav=document.getElementById('mobile-nav');
-  const mnavOverlay=document.getElementById('mnavOverlay');
   const mnavClose=document.getElementById('mnavClose');
+  const mnavBrand=document.getElementById('mnavBrand');
   if(!hamburger||!mnav)return;
+
+  const headerLogo=document.querySelector('.brand img');
+  if(headerLogo&&mnavBrand){const logo=headerLogo.cloneNode(true);logo.style.transition='none';mnavBrand.appendChild(logo)}
 
   function cloneLink(a){const c=document.createElement('a');c.href=a.getAttribute('href');c.textContent=a.textContent.trim();return c}
   function buildPanel(sourceId,inner,type){
@@ -678,12 +696,11 @@ if(miniCont)miniCont.addEventListener('click',()=>{window.location.href='quote.h
   buildPanel('mega-euro',document.querySelector('#mnavEuro .mnav-panel-inner'),'regions');
   buildPanel('mega-other',document.querySelector('#mnavOther .mnav-panel-inner'),'services');
 
-  function openMnav(){mnav.classList.add('open');mnavOverlay.classList.add('open');hamburger.classList.add('active');hamburger.setAttribute('aria-expanded','true');mnav.setAttribute('aria-hidden','false');document.body.classList.add('mnav-locked')}
-  function closeMnav(){mnav.classList.remove('open');mnavOverlay.classList.remove('open');hamburger.classList.remove('active');hamburger.setAttribute('aria-expanded','false');mnav.setAttribute('aria-hidden','true');document.body.classList.remove('mnav-locked');mnav.querySelectorAll('.mnav-toggle').forEach(b=>{b.setAttribute('aria-expanded','false');const p=document.getElementById(b.dataset.target);if(p)p.style.maxHeight=null})}
+  function openMnav(){mnav.classList.add('open');hamburger.classList.add('active');hamburger.setAttribute('aria-expanded','true');mnav.setAttribute('aria-hidden','false');document.body.classList.add('mnav-locked')}
+  function closeMnav(){mnav.classList.remove('open');hamburger.classList.remove('active');hamburger.setAttribute('aria-expanded','false');mnav.setAttribute('aria-hidden','true');document.body.classList.remove('mnav-locked');mnav.querySelectorAll('.mnav-toggle').forEach(b=>{b.setAttribute('aria-expanded','false');const p=document.getElementById(b.dataset.target);if(p)p.style.maxHeight=null})}
 
   hamburger.addEventListener('click',()=>{mnav.classList.contains('open')?closeMnav():openMnav()});
   mnavClose.addEventListener('click',closeMnav);
-  mnavOverlay.addEventListener('click',closeMnav);
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMnav()});
   window.addEventListener('resize',()=>{if(window.innerWidth>768)closeMnav()});
 
@@ -697,7 +714,7 @@ if(miniCont)miniCont.addEventListener('click',()=>{window.location.href='quote.h
     });
   });
 
-  mnav.querySelectorAll('.mnav-panel a, .mnav-link, .mnav-cta, .mnav-brand').forEach(a=>a.addEventListener('click',closeMnav));
+  mnav.querySelectorAll('.mnav-panel a, .mnav-link, .mnav-cta, .mnav-brand, .mnav-phone').forEach(a=>a.addEventListener('click',closeMnav));
 })();
 </script>
 </body>
