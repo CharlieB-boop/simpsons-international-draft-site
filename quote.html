@@ -690,9 +690,37 @@ if(miniCont)miniCont.addEventListener('click',()=>{const q=document.getElementBy
   document.querySelectorAll('.qz-pick-list').forEach(list=>{const which=list.getAttribute('data-for');
     list.querySelectorAll('.qz-opt').forEach(o=>o.addEventListener('click',()=>{
       const v=o.getAttribute('data-v');
-      const val=document.getElementById(which==='from'?'qzFromVal':'qzToVal');
-      const btn=document.getElementById(which==='from'?'qzFromBtn':'qzToBtn');
-      val.textContent=v;btn.classList.add('filled');view(1)}));});
+      setRouteField(which,v);
+      view(1)}));});
+
+  function setRouteField(which,value){
+    if(!value)return;
+    const val=document.getElementById(which==='from'?'qzFromVal':'qzToVal');
+    const btn=document.getElementById(which==='from'?'qzFromBtn':'qzToBtn');
+    if(val)val.textContent=value;
+    if(btn)btn.classList.add('filled');
+    document.querySelectorAll('.qz-pick-list[data-for="'+which+'"] .qz-opt').forEach(opt=>{
+      opt.classList.toggle('sel',opt.getAttribute('data-v')===value);
+    });
+  }
+
+  function getRoutePrefill(){
+    const params=new URLSearchParams(window.location.search);
+    let route={from:params.get('moving_from')||params.get('from')||'',to:params.get('moving_to')||params.get('to')||''};
+    if(!route.from&&!route.to){
+      try{
+        const stored=JSON.parse(localStorage.getItem('simpsonsQuoteRoute')||'{}');
+        route.from=stored.from||'';
+        route.to=stored.to||'';
+      }catch(e){}
+    }
+    return route;
+  }
+
+  const routePrefill=getRoutePrefill();
+  setRouteField('from',routePrefill.from);
+  setRouteField('to',routePrefill.to);
+
   document.querySelectorAll('.qz-size').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.qz-size').forEach(s=>s.classList.remove('sel'));c.classList.add('sel')}));
   document.querySelectorAll('.qz-pill').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.qz-pill').forEach(s=>s.classList.remove('sel'));c.classList.add('sel')}));
   view(1);

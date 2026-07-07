@@ -849,7 +849,23 @@ megaPanels.forEach(m=>{m.addEventListener('mouseenter',()=>clearTimeout(megaTime
 
 function syncCue(){document.body.classList.toggle('msel-open',!!document.querySelector('.msel.open'))}function fitMenu(sel){const menu=sel.querySelector('.msel-menu'),btn=sel.querySelector('.msel-btn'),frame=sel.closest('[data-hero-frame]');if(!menu||!btn)return;const btnRect=btn.getBoundingClientRect();let available;if(frame){available=frame.getBoundingClientRect().bottom-btnRect.bottom-20}else{available=window.innerHeight-btnRect.bottom-24}menu.style.maxHeight=Math.max(90,Math.min(380,available))+'px'}document.querySelectorAll('.msel').forEach(sel=>{const btn=sel.querySelector('.msel-btn'),val=sel.querySelector('.msel-val');btn.addEventListener('click',e=>{e.stopPropagation();const wasOpen=sel.classList.contains('open');document.querySelectorAll('.msel').forEach(s=>s.classList.remove('open'));if(!wasOpen){sel.classList.add('open');fitMenu(sel)}syncCue()});sel.querySelectorAll('.msel-opt').forEach(opt=>{opt.addEventListener('click',e=>{e.stopPropagation();val.textContent=opt.getAttribute('data-v')||opt.firstChild.textContent.trim();sel.classList.add('selected');sel.classList.remove('open');syncCue()})});});document.addEventListener('click',()=>{document.querySelectorAll('.msel').forEach(s=>s.classList.remove('open'));syncCue()});window.addEventListener('resize',()=>{const o=document.querySelector('.msel.open');if(o)fitMenu(o)});
 const miniCont=document.querySelector('.mini-continue');
-if(miniCont)miniCont.addEventListener('click',()=>{window.location.href='quote.html'});
+function getMiniMoveValue(role,placeholder){
+  const sel=document.querySelector('.mini-form .msel[data-role="'+role+'"]');
+  if(!sel||!sel.classList.contains('selected'))return '';
+  const val=(sel.querySelector('.msel-val')?.textContent||'').trim();
+  return val&&val!==placeholder?val:'';
+}
+if(miniCont)miniCont.addEventListener('click',()=>{
+  const movingFrom=getMiniMoveValue('from','Moving from');
+  const movingTo=getMiniMoveValue('to','Moving to');
+  const route={from:movingFrom,to:movingTo};
+  try{localStorage.setItem('simpsonsQuoteRoute',JSON.stringify(route))}catch(e){}
+  const params=new URLSearchParams();
+  if(movingFrom)params.set('moving_from',movingFrom);
+  if(movingTo)params.set('moving_to',movingTo);
+  const target='quote.html';
+  window.location.href=params.toString()?target+'?'+params.toString():target;
+});
 
 /* Mobile navigation — full-page takeover */
 (function(){
