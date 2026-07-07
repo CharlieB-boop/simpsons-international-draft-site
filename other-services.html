@@ -445,6 +445,15 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
 @media(max-width:1100px){.svc-cluster .svc-grid{grid-template-columns:repeat(2,1fr)}.cl-head p{display:none}}
 @media(max-width:640px){.svc-cluster .svc-grid{grid-template-columns:1fr}}
 
+
+/* Clean heading emphasis override: keeps headings consistent across pages */
+h1 em,h2 em,h3 em,h4 em,h5 em,h6 em,
+h1 .accent,h2 .accent,h3 .accent,h4 .accent,h5 .accent,h6 .accent,
+h1 .highlight,h2 .highlight,h3 .highlight,h4 .highlight,h5 .highlight,h6 .highlight{
+  font-style:normal!important;
+  color:inherit!important;
+}
+
 </style>
 </head>
 <body>
@@ -469,7 +478,7 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
   <span class="orn">&amp;</span>
   <div class="svc-hero-inner">
     <span class="man-eyebrow">Other Services</span>
-    <h1>Everything <em>around</em> the move</h1>
+    <h1>Everything around the move</h1>
     <p>The removal itself is only part of the job. These are the services that surround it, arranged in the order you will meet them.</p>
   </div>
 </header>

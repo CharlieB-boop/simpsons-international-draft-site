@@ -417,6 +417,15 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
 .veh-i{fill:none;stroke:var(--navy);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .veh-i.faintline{stroke:rgba(34,49,107,0.35);stroke-width:1.2}
 @media(max-width:1024px){.steps-vehicle{display:none}}
+
+/* Clean heading emphasis override: keeps headings consistent across pages */
+h1 em,h2 em,h3 em,h4 em,h5 em,h6 em,
+h1 .accent,h2 .accent,h3 .accent,h4 .accent,h5 .accent,h6 .accent,
+h1 .highlight,h2 .highlight,h3 .highlight,h4 .highlight,h5 .highlight,h6 .highlight{
+  font-style:normal!important;
+  color:inherit!important;
+}
+
 </style>
 
 <style>
@@ -539,7 +548,7 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
 <section class="au-intro"><div class="wrap au-intro-grid">
   <div class="reveal">
     <span class="eyebrow" style="display:block;margin-bottom:16px">The Move</span>
-    <h2>New Zealand sits at the far end of the earth, and we <em>know the route well</em>.</h2>
+    <h2>New Zealand sits at the far end of the earth, and we know the route well.</h2>
     <p>British families have been settling in New Zealand for generations, and it remains one of the longest journeys a household can make. Your belongings may travel by sea for a couple of months, so we plan every stage carefully and keep you updated the whole way.</p>
     <p>Sea freight is the natural choice for a household move to New Zealand. Air freight suits anything you would rather have sooner.</p>
     <div class="au-cities-label">Popular destinations we ship to</div>
@@ -559,7 +568,7 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
 </div></section>
 
 <section class="au-options"><div class="wrap">
-  <div class="sec-head reveal"><span class="eyebrow">Your options</span><h2>Choose the right <em>way to ship</em></h2><p>Every move to New Zealand is different, so we shape the service around yours.</p></div>
+  <div class="sec-head reveal"><span class="eyebrow">Your options</span><h2>Choose the right way to ship</h2><p>Every move to New Zealand is different, so we shape the service around yours.</p></div>
   <div class="au-opt-grid reveal">
     <div class="au-opt-card"><span class="tag">Sea &middot; Sole-use</span><h3>Your own 20ft or 40ft container</h3><p>Your belongings travel alone, packed and sealed at your door and not opened again until they reach you. The fastest and most secure sea option.</p><div class="best">Best for: <span>full household moves</span></div></div>
     <div class="au-opt-card"><span class="tag">Sea &middot; Shared</span><h3>Groupage / part-load container</h3><p>Your goods share container space with other shipments heading to New Zealand, splitting the cost between several moves. Slightly longer transit, but excellent value.</p><div class="best">Best for: <span>smaller moves, flexible budgets</span></div></div>
@@ -651,8 +660,40 @@ megaTriggers.forEach(tr=>{tr.addEventListener('mouseenter',()=>megaOpen(tr.datas
 megaPanels.forEach(m=>{m.addEventListener('mouseenter',()=>clearTimeout(megaTimer));m.addEventListener('mouseleave',megaSched)});
 
 function syncCue(){document.body.classList.toggle('msel-open',!!document.querySelector('.msel.open'))}function fitMenu(sel){const menu=sel.querySelector('.msel-menu'),btn=sel.querySelector('.msel-btn'),frame=sel.closest('[data-hero-frame]');if(!menu||!btn)return;const btnRect=btn.getBoundingClientRect();let available;if(frame){available=frame.getBoundingClientRect().bottom-btnRect.bottom-20}else{available=window.innerHeight-btnRect.bottom-24}menu.style.maxHeight=Math.max(90,Math.min(380,available))+'px'}document.querySelectorAll('.msel').forEach(sel=>{const btn=sel.querySelector('.msel-btn'),val=sel.querySelector('.msel-val');btn.addEventListener('click',e=>{e.stopPropagation();const wasOpen=sel.classList.contains('open');document.querySelectorAll('.msel').forEach(s=>s.classList.remove('open'));if(!wasOpen){sel.classList.add('open');fitMenu(sel)}syncCue()});sel.querySelectorAll('.msel-opt').forEach(opt=>{opt.addEventListener('click',e=>{e.stopPropagation();val.textContent=opt.getAttribute('data-v')||opt.firstChild.textContent.trim();sel.classList.add('selected');sel.classList.remove('open');syncCue()})});});document.addEventListener('click',()=>{document.querySelectorAll('.msel').forEach(s=>s.classList.remove('open'));syncCue()});window.addEventListener('resize',()=>{const o=document.querySelector('.msel.open');if(o)fitMenu(o)});
+
+function simpsonsGetRouteSelection(role){
+  const sel=document.querySelector('.msel[data-role="'+role+'"]');
+  if(!sel)return '';
+  const val=(sel.querySelector('.msel-val')?.textContent||'').trim();
+  const placeholders=['Moving from','Moving to','Select your starting point','Select your destination'];
+  return placeholders.includes(val)?'':val;
+}
+function simpsonsBuildQuoteUrl(){
+  const movingFrom=simpsonsGetRouteSelection('from');
+  const movingTo=simpsonsGetRouteSelection('to');
+  const params=new URLSearchParams();
+  if(movingFrom)params.set('moving_from',movingFrom);
+  if(movingTo)params.set('moving_to',movingTo);
+  if(movingFrom||movingTo){
+    try{localStorage.setItem('simpsonsQuoteRoute',JSON.stringify({from:movingFrom,to:movingTo}))}catch(e){}
+  }
+  const q=params.toString();
+  return q?'quote.html?'+q:'quote.html';
+}
+function simpsonsGoToQuote(){
+  window.location.href=simpsonsBuildQuoteUrl();
+}
+
 const miniCont=document.querySelector('.mini-continue');
-if(miniCont)miniCont.addEventListener('click',()=>{window.location.href='quote.html'});
+if(miniCont)miniCont.addEventListener('click',simpsonsGoToQuote);
+const simpsonsQuoteLinksEnhanced=true;
+document.querySelectorAll('a[href="quote.html"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const url=simpsonsBuildQuoteUrl();
+    if(url!=='quote.html'){e.preventDefault();window.location.href=url}
+  });
+});
+
 </script>
 </body>
 </html>
