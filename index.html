@@ -226,12 +226,13 @@ section{padding:clamp(4.5rem,8vw,7.5rem) clamp(1.25rem,4vw,3.5rem)}
 @keyframes sparkle{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1)}}
 
 .stats{background:var(--navy-deep)}
-.stats-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.25rem;max-width:1220px;margin:0 auto;text-align:center}
-.stat{position:relative;min-width:0;padding:0 .55rem}
-.stat:not(:last-child)::after{content:"";position:absolute;right:-.625rem;top:50%;transform:translateY(-50%);width:1px;height:54px;background:rgba(191,161,95,0.22)}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(2.15rem,3.8vw,3.45rem);color:var(--cream);font-weight:500;line-height:1;letter-spacing:.01em;font-variant-numeric:tabular-nums}
-.stat .gr{width:30px;height:1px;background:var(--gold);margin:14px auto}
-.stat-label{color:rgba(255,255,255,0.62);font-size:10.5px;letter-spacing:0.15em;text-transform:uppercase;line-height:1.45}
+.stats-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2.2rem;max-width:1320px;margin:0 auto;text-align:center}
+.stat{position:relative;min-width:0;padding:0 .85rem}
+.stat:not(:last-child)::after{content:"";position:absolute;right:-1.1rem;top:50%;transform:translateY(-50%);width:1px;height:48px;background:rgba(191,161,95,0.18)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.15vw,3.15rem);color:var(--cream);font-weight:500;line-height:1;letter-spacing:.005em;font-variant-numeric:tabular-nums}
+.stat--manager .stat-num{font-family:'Poppins',sans-serif;font-size:clamp(1.85rem,2.55vw,2.65rem);font-weight:300;letter-spacing:-0.03em}
+.stat .gr{width:28px;height:1px;background:var(--gold);margin:13px auto}
+.stat-label{color:rgba(255,255,255,0.62);font-size:10px;letter-spacing:0.145em;text-transform:uppercase;line-height:1.45}
 
 .services{background:var(--cream)}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(34,49,107,0.14);border-left:1px solid rgba(34,49,107,0.14)}
@@ -311,8 +312,8 @@ footer{background:var(--navy-deep);padding:clamp(3.5rem,6vw,5rem) clamp(1.25rem,
   .est-options{grid-template-columns:1fr 1fr}
   .est-result{grid-template-columns:1fr;gap:1.5rem}
   .est-side{border-left:none;padding-left:0;border-top:1px solid rgba(34,49,107,0.12);padding-top:1.5rem}
-  .stats-grid{grid-template-columns:repeat(3,1fr);gap:2.4rem 1.2rem;max-width:760px}
-  .stat{padding:0 .5rem}
+  .stats-grid{grid-template-columns:repeat(3,1fr);gap:2.55rem 1.45rem;max-width:820px}
+  .stat{padding:0 .65rem}
   .stat::after{display:none}
   .stat:nth-child(4){grid-column:1 / 2}
   .stat:nth-child(5){grid-column:2 / 4}
@@ -330,12 +331,15 @@ footer{background:var(--navy-deep);padding:clamp(3.5rem,6vw,5rem) clamp(1.25rem,
   .steps{grid-template-columns:1fr 1fr}
   .est-options{grid-template-columns:1fr 1fr}
   .svc-grid{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:1fr 1fr;gap:2.3rem 1rem;max-width:420px}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:2.45rem 1.45rem;max-width:390px}
+  .stat{padding:0 .45rem}
   .stat::after{display:none}
   .stat:nth-child(4){grid-column:auto}
-  .stat:nth-child(5){grid-column:1 / -1;max-width:240px;justify-self:center}
-  .stat-num{font-size:clamp(2.2rem,12vw,3.25rem)}
-  .stat-label{font-size:10px;letter-spacing:.14em}
+  .stat:nth-child(5){grid-column:1 / -1;max-width:230px;justify-self:center;padding-top:.15rem}
+  .stat-num{font-size:clamp(2rem,9.4vw,2.85rem)}
+  .stat--manager .stat-num{font-size:clamp(1.8rem,8.6vw,2.45rem)}
+  .stat .gr{margin:12px auto}
+  .stat-label{font-size:9.5px;letter-spacing:.13em}
   .foot-grid{grid-template-columns:1fr}
   .trust-item{border-right:none;min-width:45%}
   .hero h1{font-size:2.6rem}
@@ -662,11 +666,11 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
 </div></section>
 
 <section class="stats"><div class="wrap"><div class="stats-grid">
-  <div class="stat reveal"><div class="stat-num" data-target="2000000" data-suffix="+">0</div><div class="gr"></div><div class="stat-label">Boxes Shipped</div></div>
+  <div class="stat reveal"><div class="stat-num" data-target="200000" data-suffix="+">0</div><div class="gr"></div><div class="stat-label">Boxes Shipped</div></div>
   <div class="stat reveal"><div class="stat-num" data-target="10000" data-suffix="+">0</div><div class="gr"></div><div class="stat-label">Families Moved</div></div>
   <div class="stat reveal"><div class="stat-num" data-target="35" data-suffix="">0</div><div class="gr"></div><div class="stat-label">Years' Experience</div></div>
   <div class="stat reveal"><div class="stat-num" data-target="4.8" data-dec="1" data-suffix="">0</div><div class="gr"></div><div class="stat-label">Trustpilot Rating</div></div>
-  <div class="stat reveal"><div class="stat-num" data-target="1" data-suffix="">0</div><div class="gr"></div><div class="stat-label">Dedicated Move Manager</div></div>
+  <div class="stat stat--manager reveal"><div class="stat-num" data-target="1" data-suffix="">0</div><div class="gr"></div><div class="stat-label">Dedicated Move Manager</div></div>
 </div></div></section>
 
 <section class="services" id="services"><div class="wrap">
