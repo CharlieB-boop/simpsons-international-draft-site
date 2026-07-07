@@ -509,30 +509,14 @@ body{background:var(--navy-deep)}
 
 
 
-/* Premium mobile trial additions for quote page */
-.quote-route-memory{display:none}
-.mobile-sticky-cta{display:none}
+/* Mobile quote refinement: keep the dedicated manager nudge, remove route summary and sticky CTA */
 .quote-help-card{display:none}
 @media(max-width:768px){
-  .quote-route-memory{display:block;width:100%;max-width:520px;margin:-8px auto 18px;text-align:left;background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.055));border:1px solid rgba(255,255,255,.26);border-radius:22px;padding:15px 16px;backdrop-filter:blur(18px) saturate(155%);-webkit-backdrop-filter:blur(18px) saturate(155%);box-shadow:0 22px 50px -34px rgba(0,0,0,.7)}
-  .quote-route-memory .r-label{display:flex;align-items:center;gap:8px;color:var(--gold-bright);font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin-bottom:9px}
-  .quote-route-memory .r-label::before{content:"";width:20px;height:1px;background:rgba(216,189,132,.75)}
-  .quote-route-memory .r-route{display:flex;align-items:center;gap:10px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.18rem;line-height:1.12}
-  .quote-route-memory .r-from,.quote-route-memory .r-to{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:44%}
-  .quote-route-memory .r-arrow{color:var(--gold-bright);font-family:'Poppins',sans-serif;font-size:.9rem}
-  .quote-route-memory .r-support{display:block;margin-top:8px;color:rgba(255,255,255,.62);font-size:11px;line-height:1.4;font-weight:300}
   .quote-help-card{display:block;margin-top:14px;background:rgba(255,255,255,.06);border:1px solid rgba(216,189,132,.22);border-radius:16px;padding:14px 15px;color:rgba(255,255,255,.66);font-size:12px;line-height:1.55;font-weight:300}
   .quote-help-card strong{display:block;font-family:'Cormorant Garamond',serif;color:#fff;font-size:1.16rem;font-weight:500;margin-bottom:3px}
-  .mobile-sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:1190;display:flex;align-items:center;justify-content:space-between;gap:14px;text-decoration:none;color:#fff;background:linear-gradient(135deg,rgba(20,29,59,.92),rgba(28,42,87,.86));border:1px solid rgba(216,189,132,.45);border-radius:18px;padding:13px 16px;box-shadow:0 18px 48px -20px rgba(0,0,0,.65);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%)}
-  .mobile-sticky-cta .cta-main{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;line-height:1.25}
-  .mobile-sticky-cta small{display:block;color:rgba(255,255,255,.58);font-size:10.5px;font-weight:300;margin-top:2px;letter-spacing:0;text-transform:none}
-  .mobile-sticky-cta .cta-arrow{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(216,189,132,.13);border:1px solid rgba(216,189,132,.36);color:var(--gold-bright)}
-  .callback{bottom:86px;right:16px}.callback-toggle span{display:none}.callback-toggle{padding:15px;border-radius:50%}
-  body{padding-bottom:84px}
-  .qz-stage{padding-bottom:110px}
-  .qz-nav{margin-bottom:10px}
+  .callback{right:16px}.callback-toggle span{display:none}.callback-toggle{padding:15px;border-radius:50%}
 }
-@media(min-width:769px){.mobile-sticky-cta{display:none!important}}
+
 
 </style>
 </head>
@@ -558,9 +542,7 @@ body{background:var(--navy-deep)}
 <div class="qz-head">
 <span class="eyebrow">Get a Quote</span>
 <h1>Let’s plan your move</h1>
-</div>
-<div class="quote-route-memory" id="quoteRouteMemory" aria-live="polite"><span class="r-label">Your move</span><div class="r-route"><span class="r-from" id="quoteRouteFrom">Choose a start point</span><span class="r-arrow">→</span><span class="r-to" id="quoteRouteTo">Choose a destination</span></div><span class="r-support">A dedicated move manager will use this to guide the next steps.</span></div>
-<div class="qz-card">
+</div> <div class="qz-card">
 <div id="qzMain">
 <div class="qz-prog-track"><div class="qz-prog-fill" id="qzFill"></div></div>
 <div class="qz-prog-lab"><span class="st" id="qzStepLab">Step 1 of 4</span><span class="sn" id="qzStepName">Your route</span></div>
@@ -578,7 +560,7 @@ body{background:var(--navy-deep)}
 <span class="fgo"><svg class="tick" viewbox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"></path></svg><svg class="chev" viewbox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg></span>
 </button>
 </div>
-<div class="quote-help-card"><strong>One dedicated move manager</strong> Your route stays with the same main contact, so you are guided rather than passed around.</div>
+<div class="quote-help-card"><strong>One dedicated move manager</strong> One main contact keeps the process clear, calm and easy to follow.</div>
 </div>
 <div class="qz-panel" data-view="pickFrom">
 <div class="qz-pick-head">
@@ -652,7 +634,7 @@ body{background:var(--navy-deep)}
 </div>
 <div class="foot-bottom"><span class="cp">© 2025 Simpsons International Removals &amp; Shipping. All rights reserved.</span><div class="tags"><span class="tag">Free Surveys</span><span class="tag">Fully Insured</span><span class="tag">Trustpilot Excellent</span></div></div>
 </footer>
-<a class="mobile-sticky-cta" href="tel:01322949557"><span><span class="cta-main">Speak to a move manager</span><small>01322 949 557</small></span><span class="cta-arrow">☎</span></a>
+
 <div class="callback" id="callback">
 <div class="callback-panel">
 <button aria-label="Close" class="callback-close" id="cbClose">×</button>
@@ -721,7 +703,6 @@ if(miniCont)miniCont.addEventListener('click',()=>{const q=document.getElementBy
     list.querySelectorAll('.qz-opt').forEach(o=>o.addEventListener('click',()=>{
       const v=o.getAttribute('data-v');
       setRouteField(which,v);
-      updateQuoteRouteMemory();
       view(1)}));});
 
   function setRouteField(which,value){
@@ -751,17 +732,6 @@ if(miniCont)miniCont.addEventListener('click',()=>{const q=document.getElementBy
   const routePrefill=getRoutePrefill();
   setRouteField('from',routePrefill.from);
   setRouteField('to',routePrefill.to);
-
-  function updateQuoteRouteMemory(){
-    const from=(document.getElementById('qzFromVal')?.textContent||'').trim();
-    const to=(document.getElementById('qzToVal')?.textContent||'').trim();
-    const fromClean=from&&from!=='Select your starting point'?from:'';
-    const toClean=to&&to!=='Select your destination'?to:'';
-    const rf=document.getElementById('quoteRouteFrom'),rt=document.getElementById('quoteRouteTo');
-    if(rf)rf.textContent=fromClean||'Choose a start point';
-    if(rt)rt.textContent=toClean||'Choose a destination';
-  }
-  updateQuoteRouteMemory();
 
   document.querySelectorAll('.qz-size').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.qz-size').forEach(s=>s.classList.remove('sel'));c.classList.add('sel')}));
   document.querySelectorAll('.qz-pill').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.qz-pill').forEach(s=>s.classList.remove('sel'));c.classList.add('sel')}));
