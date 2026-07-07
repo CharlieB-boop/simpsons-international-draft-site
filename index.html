@@ -429,6 +429,8 @@ body.mnav-locked{overflow:hidden}
 .jwrap{height:340vh;position:relative}
 .jsticky{position:sticky;top:0;min-height:100vh;display:flex;align-items:center;padding:4vh clamp(1.25rem,4vw,3.5rem)}
 .jsticky .wrap{width:100%}
+.jwrap.journey-played{height:auto}
+.jwrap.journey-played .jsticky{position:static;min-height:100vh}
 .steps-track{background:rgba(34,49,107,0.14)}
 .steps-fill{background:var(--navy);transition:width .12s linear}
 .steps-marker{display:none!important}
@@ -677,20 +679,10 @@ function animateStats(){document.querySelectorAll('.stat-num').forEach(el=>{cons
 
 const jwrap=document.querySelector('.jwrap'),jFill=document.getElementById('jFill'),stepEls=document.querySelectorAll('.steps .step'),N=stepEls.length;
 const jVehicle=document.getElementById('jVehicle'),vehVan=jVehicle?jVehicle.querySelector('.veh-van'):null,vehBoat=jVehicle?jVehicle.querySelector('.veh-boat'):null,SHIP_INDEX=3;
-let journeyLocked=false,journeyMaxProgress=0;
-function updateJourney(){
-  if(!jwrap||!jFill)return;
-  if(window.innerWidth<=1024){return}
-  if(journeyLocked)return;
-  const rect=jwrap.getBoundingClientRect(),vh=window.innerHeight,total=rect.height-vh;
-  const rawP=total>0?Math.min(Math.max(-rect.top,0),total)/total:0;
-
-  // Only allow the journey to move forwards. Scrolling back up will not rewind it,
-  // and scrolling down again will continue from the furthest point already reached.
-  const p=Math.max(rawP,journeyMaxProgress);
-  if(p===journeyMaxProgress&&rawP<journeyMaxProgress)return;
-  journeyMaxProgress=p;
-
+let journeyComplete=false,journeyCollapsed=false;
+function setJourneyProgress(p){
+  if(!jFill)return;
+  p=Math.min(Math.max(p,0),1);
   const stage=Math.round(p*(N-1));
   const contPct=p*100;
   jFill.style.width=contPct+'%';
@@ -700,8 +692,35 @@ function updateJourney(){
     if(vehVan)vehVan.classList.toggle('show',!isBoat);
     if(vehBoat)vehBoat.classList.toggle('show',isBoat);
   }
-  stepEls.forEach((el,i)=>{el.classList.toggle('done',i<=stage);el.classList.toggle('current',i===stage)});
-  if(p>=1){journeyLocked=true}
+  stepEls.forEach((el,i)=>{
+    el.classList.toggle('done',i<=stage);
+    el.classList.toggle('current',i===stage);
+  });
+}
+function releaseJourneyLock(){
+  if(journeyCollapsed||!jwrap||window.innerWidth<=1024)return;
+  journeyCollapsed=true;
+  const oldHeight=jwrap.offsetHeight;
+  const oldScrollY=window.scrollY;
+  setJourneyProgress(1);
+  jwrap.classList.add('journey-played');
+  const newHeight=jwrap.offsetHeight;
+  const removedSpace=oldHeight-newHeight;
+  if(removedSpace>0){
+    window.scrollTo({top:Math.max(0,oldScrollY-removedSpace),left:window.scrollX,behavior:'auto'});
+  }
+}
+function updateJourney(){
+  if(!jwrap||!jFill)return;
+  if(window.innerWidth<=1024){setJourneyProgress(1);return}
+  if(journeyComplete){releaseJourneyLock();return}
+  const rect=jwrap.getBoundingClientRect(),vh=window.innerHeight,total=rect.height-vh;
+  let p=total>0?Math.min(Math.max(-rect.top,0),total)/total:0;
+  setJourneyProgress(p);
+  if(p>=1){
+    journeyComplete=true;
+    requestAnimationFrame(releaseJourneyLock);
+  }
 }
 window.addEventListener('scroll',updateJourney,{passive:true});
 window.addEventListener('resize',updateJourney);
