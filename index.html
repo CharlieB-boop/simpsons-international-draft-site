@@ -675,7 +675,37 @@ const statObs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting
 const statsEl=document.querySelector('.stats');if(statsEl)statObs.observe(statsEl);
 function animateStats(){document.querySelectorAll('.stat-num').forEach(el=>{const target=parseFloat(el.dataset.target),dec=parseInt(el.dataset.dec||'0'),suf=el.dataset.suffix||'',dur=1900,start=performance.now();function tick(now){let p=Math.min((now-start)/dur,1);p=1-Math.pow(1-p,3);let v=target*p;el.textContent=(dec>0?v.toFixed(dec):Math.round(v).toLocaleString())+suf;if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)})}
 
-const jwrap=document.querySelector('.jwrap'),jFill=document.getElementById('jFill'),stepEls=document.querySelectorAll('.steps .step'),N=stepEls.length;const jVehicle=document.getElementById('jVehicle'),vehVan=jVehicle?jVehicle.querySelector('.veh-van'):null,vehBoat=jVehicle?jVehicle.querySelector('.veh-boat'):null,SHIP_INDEX=3;let journeyLocked=false;function updateJourney(){if(!jwrap||!jFill)return;if(window.innerWidth<=1024){return}if(journeyLocked)return;const rect=jwrap.getBoundingClientRect(),vh=window.innerHeight,total=rect.height-vh;let p=total>0?Math.min(Math.max(-rect.top,0),total)/total:0;const stage=Math.round(p*(N-1));const contPct=p*100;jFill.style.width=contPct+'%';if(jVehicle){jVehicle.style.left=contPct+'%';const isBoat=stage>=SHIP_INDEX;if(vehVan)vehVan.classList.toggle('show',!isBoat);if(vehBoat)vehBoat.classList.toggle('show',isBoat)}stepEls.forEach((el,i)=>{el.classList.toggle('done',i<=stage);el.classList.toggle('current',i===stage)});if(p>=1){journeyLocked=true}}window.addEventListener('scroll',updateJourney,{passive:true});window.addEventListener('resize',updateJourney);updateJourney();
+const jwrap=document.querySelector('.jwrap'),jFill=document.getElementById('jFill'),stepEls=document.querySelectorAll('.steps .step'),N=stepEls.length;
+const jVehicle=document.getElementById('jVehicle'),vehVan=jVehicle?jVehicle.querySelector('.veh-van'):null,vehBoat=jVehicle?jVehicle.querySelector('.veh-boat'):null,SHIP_INDEX=3;
+let journeyLocked=false,journeyMaxProgress=0;
+function updateJourney(){
+  if(!jwrap||!jFill)return;
+  if(window.innerWidth<=1024){return}
+  if(journeyLocked)return;
+  const rect=jwrap.getBoundingClientRect(),vh=window.innerHeight,total=rect.height-vh;
+  const rawP=total>0?Math.min(Math.max(-rect.top,0),total)/total:0;
+
+  // Only allow the journey to move forwards. Scrolling back up will not rewind it,
+  // and scrolling down again will continue from the furthest point already reached.
+  const p=Math.max(rawP,journeyMaxProgress);
+  if(p===journeyMaxProgress&&rawP<journeyMaxProgress)return;
+  journeyMaxProgress=p;
+
+  const stage=Math.round(p*(N-1));
+  const contPct=p*100;
+  jFill.style.width=contPct+'%';
+  if(jVehicle){
+    jVehicle.style.left=contPct+'%';
+    const isBoat=stage>=SHIP_INDEX;
+    if(vehVan)vehVan.classList.toggle('show',!isBoat);
+    if(vehBoat)vehBoat.classList.toggle('show',isBoat);
+  }
+  stepEls.forEach((el,i)=>{el.classList.toggle('done',i<=stage);el.classList.toggle('current',i===stage)});
+  if(p>=1){journeyLocked=true}
+}
+window.addEventListener('scroll',updateJourney,{passive:true});
+window.addEventListener('resize',updateJourney);
+updateJourney();
 
 if('IntersectionObserver' in window){
   const stepReveal=new IntersectionObserver((entries)=>{
