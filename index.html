@@ -117,24 +117,44 @@ section{padding:clamp(4.5rem,8vw,7.5rem) clamp(1.25rem,4vw,3.5rem)}
 .dest{background:var(--navy-deep)}
 .dest .sec-head h2{color:#fff}.dest .sec-head h2 em{color:#fff}
 .dest .sec-head .eyebrow{color:rgba(255,255,255,0.6)}.dest .sec-head p{color:rgba(255,255,255,0.6)}
-.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.dcard{position:relative;overflow:hidden;text-decoration:none;display:block;border:1px solid rgba(191,161,95,0.14);aspect-ratio:4/5;cursor:pointer}
-.dcard img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.8,.2,1);filter:brightness(.66) saturate(.95)}
-.dcard:hover img{transform:scale(1.07);filter:brightness(.74) saturate(1.05)}
-.dcard .veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,21,45,0.85) 0%,rgba(15,21,45,0.1) 55%,transparent 100%)}
-.dcard .meta{position:absolute;left:0;right:0;bottom:0;padding:20px;z-index:2}
-.dcard .country{font-family:'Cormorant Garamond',serif;color:#fff;font-size:1.5rem;font-weight:500;display:block;line-height:1.1}
-.dcard .modes{color:rgba(255,255,255,0.62);font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;margin-top:5px;display:block}
-.dcard .snapshot{position:absolute;inset:0;z-index:3;background:linear-gradient(to top,rgba(12,17,38,0.97),rgba(15,21,45,0.88));padding:22px;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;transition:opacity .4s ease;pointer-events:none}
-.dcard:hover .snapshot,.dcard.show-snap .snapshot{opacity:1}
-.snapshot .sc{font-family:'Cormorant Garamond',serif;color:#fff;font-size:1.5rem;font-weight:500;margin-bottom:12px}
-.snapshot .srow{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:6px 0;border-top:1px solid rgba(255,255,255,0.12);font-size:11px}
-.snapshot .srow .k{color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase}
-.snapshot .srow .v{color:#fff;font-weight:500;text-align:right}
-.snapshot .why{color:rgba(255,255,255,0.72);font-size:11.5px;font-weight:300;font-style:italic;margin-top:11px;line-height:1.45}
-.snapshot .slink{margin-top:13px;color:#fff;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;display:inline-flex;align-items:center;gap:7px}
-.snapshot .slink svg{width:13px;height:13px;stroke:rgba(255,255,255,0.8);fill:none;stroke-width:2}
-.dest-foot{text-align:center;margin-top:3rem}
+.dest-group{margin-top:3.5rem}
+.dest-group:first-of-type{margin-top:0}
+.dest-glabel{display:flex;align-items:center;gap:16px;margin-bottom:1.4rem}
+.dest-glabel span{font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-bright)}
+.dest-glabel::after{content:"";height:1px;flex:1;background:rgba(191,161,95,0.25)}
+.pick-wrap{display:grid;grid-template-columns:260px 1fr;gap:0;border:1px solid rgba(191,161,95,0.16);border-radius:16px;overflow:hidden;background:rgba(255,255,255,0.02);min-height:460px}
+.pick-list{display:flex;flex-direction:column;padding:10px 0}
+.pick-item{background:none;border:none;text-align:left;font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:rgba(255,255,255,0.55);padding:15px 24px;cursor:pointer;position:relative;transition:color .25s;display:flex;align-items:center;gap:10px;width:100%}
+.pick-item .dot{width:5px;height:5px;border-radius:50%;background:transparent;transition:background .25s;flex-shrink:0}
+.pick-item:hover{color:rgba(255,255,255,0.85)}
+.pick-item.active{color:#fff}
+.pick-item.active .dot{background:var(--gold-bright)}
+.pick-item.active::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;background:var(--gold-bright)}
+.pick-panel{position:relative;min-height:460px;display:flex;align-items:flex-end}
+.pick-panel .pp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(1.02)}
+.pick-panel .pp-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,17,38,0.94) 0%,rgba(12,17,38,0.25) 55%,transparent 100%)}
+.pick-panel .pp-content{position:relative;z-index:2;padding:clamp(1.75rem,3vw,3rem);width:100%}
+.pp-content h3{font-family:'Cormorant Garamond',serif;color:#fff;font-size:clamp(2.1rem,3.6vw,3rem);font-weight:500;margin-bottom:6px}
+.pp-content .pp-modes{color:rgba(255,255,255,0.55);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:22px;display:block}
+.pp-stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.pp-stat{background:rgba(12,17,38,0.62);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);border:1px solid rgba(255,255,255,0.14);border-radius:10px;padding:11px 20px}
+.pp-stat .n{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold-bright);line-height:1;text-shadow:0 1px 3px rgba(0,0,0,0.4)}
+.pp-stat .l{font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-top:5px}
+.pp-why{color:rgba(255,255,255,0.82);font-size:1.02rem;font-weight:300;font-style:italic;max-width:520px;margin-bottom:24px;line-height:1.5}
+.pp-cta{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy-deep);padding:14px 28px;border-radius:50px;text-decoration:none;font-size:11.5px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:background .3s}
+.pp-cta:hover{background:var(--gold-bright)}
+.pp-cta svg{width:14px;height:14px;stroke:var(--navy-deep);fill:none;stroke-width:2}
+@media(max-width:768px){
+  .pick-wrap{grid-template-columns:1fr;min-height:0}
+  .pick-list{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;padding:16px}
+  .pick-item{padding:10px 10px;font-size:0.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid rgba(255,255,255,0.18);border-radius:30px;color:rgba(255,255,255,0.6);justify-content:center;text-align:center;width:auto}
+  .pick-item .dot{display:none}
+  .pick-item.active{border-color:var(--gold-bright);color:#fff;background:rgba(216,189,132,0.14)}
+  .pick-item.active::before{content:none}
+  .pick-panel{min-height:380px}
+  .dest-group{margin-top:2.5rem}
+}
+.dest-foot{text-align:center;margin-top:2rem}
 .dest-foot a{display:inline-flex;align-items:center;gap:10px;color:rgba(255,255,255,0.85);font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(216,189,132,0.4);padding-bottom:5px;transition:gap .3s}
 .dest-foot a:hover{gap:16px}
 
@@ -283,7 +303,6 @@ footer{background:var(--navy-deep);padding:clamp(3.5rem,6vw,5rem) clamp(1.25rem,
 .cb-thanks p{color:#fff;font-size:14px;font-weight:300}
 
 @media(max-width:1024px){
-  .dest-grid{grid-template-columns:repeat(2,1fr)}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .why-grid{grid-template-columns:1fr;gap:2.5rem}
   .steps{grid-template-columns:1fr 1fr 1fr}
@@ -305,7 +324,6 @@ footer{background:var(--navy-deep);padding:clamp(3.5rem,6vw,5rem) clamp(1.25rem,
   .about-figure .photo{height:380px}
   .about-figure .badge{right:14px}
   .qfields{grid-template-columns:1fr}
-  .dest-grid{grid-template-columns:1fr 1fr;gap:10px}
   .steps{grid-template-columns:1fr 1fr}
   .est-options{grid-template-columns:1fr 1fr}
   .svc-grid{grid-template-columns:1fr}
@@ -539,18 +557,25 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
 </div></section>
 
 <section class="dest"><div class="wrap">
-  <div class="sec-head reveal"><span class="eyebrow">Popular Destinations</span><h2>Where will <em>life take you?</em></h2><p>Hover a destination for a snapshot — currency, climate and transit times — then choose where to begin your move.</p></div>
-  <div class="dest-grid reveal">
-    <a href="australia.html" class="dcard"><img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?fm=jpg&q=74&w=700&auto=format&fit=crop" alt="Australia"><div class="veil"></div><div class="meta"><span class="country">Australia</span><span class="modes">Sea · Air · Container</span></div><div class="snapshot"><div class="sc">Australia</div><div class="srow"><span class="k">Currency</span><span class="v">AUD</span></div><div class="srow"><span class="k">Time zone</span><span class="v">UTC +10</span></div><div class="srow"><span class="k">Avg climate</span><span class="v">22°C</span></div><div class="srow"><span class="k">Transit</span><span class="v">8–10 wks sea</span></div><div class="why">Beaches, space and the outdoor life.</div><span class="slink">Explore Australia <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a>
-    <a href="#" class="dcard"><img src="https://images.unsplash.com/photo-1748626083682-611d0a66cb50?fm=jpg&q=74&w=700&auto=format&fit=crop" alt="UAE &amp; Dubai"><div class="veil"></div><div class="meta"><span class="country">UAE &amp; Dubai</span><span class="modes">Sea · Air</span></div><div class="snapshot"><div class="sc">UAE &amp; Dubai</div><div class="srow"><span class="k">Currency</span><span class="v">AED</span></div><div class="srow"><span class="k">Time zone</span><span class="v">UTC +4</span></div><div class="srow"><span class="k">Avg climate</span><span class="v">33°C</span></div><div class="srow"><span class="k">Transit</span><span class="v">5–6 wks sea</span></div><div class="why">Tax-free living and year-round sun.</div><span class="slink">Explore UAE <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a>
-    <a href="#" class="dcard"><img src="https://images.unsplash.com/photo-1765187275519-547fb2d0bb6a?fm=jpg&q=74&w=700&auto=format&fit=crop" alt="USA"><div class="veil"></div><div class="meta"><span class="country">USA</span><span class="modes">Sea · Air · Container</span></div><div class="snapshot"><div class="sc">USA</div><div class="srow"><span class="k">Currency</span><span class="v">USD</span></div><div class="srow"><span class="k">Time zone</span><span class="v">UTC −5 to −8</span></div><div class="srow"><span class="k">Avg climate</span><span class="v">18°C</span></div><div class="srow"><span class="k">Transit</span><span class="v">6–8 wks sea</span></div><div class="why">Big opportunity, big-city energy.</div><span class="slink">Explore USA <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a>
-    <a href="#" class="dcard"><img src="https://images.unsplash.com/photo-1558818061-547b1114aa6a?fm=jpg&q=74&w=700&auto=format&fit=crop" alt="Canada"><div class="veil"></div><div class="meta"><span class="country">Canada</span><span class="modes">Sea · Air · Container</span></div><div class="snapshot"><div class="sc">Canada</div><div class="srow"><span class="k">Currency</span><span class="v">CAD</span></div><div class="srow"><span class="k">Time zone</span><span class="v">UTC −4 to −8</span></div><div class="srow"><span class="k">Avg climate</span><span class="v">8°C</span></div><div class="srow"><span class="k">Transit</span><span class="v">6–8 wks sea</span></div><div class="why">Nature, safety and a warm welcome.</div><span class="slink">Explore Canada <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a>
-    <a href="#" class="dcard"><img src="https://images.unsplash.com/photo-1744604030401-b24c5975a574?fm=jpg&q=74&w=700&auto=format&fit=crop" alt="South Africa"><div class="veil"></div><div class="meta"><span class="country">South Africa</span><span class="modes">Sea · Container</span></div><div class="snapshot"><div class="sc">South Africa</div><div class="srow"><span class="k">Currency</span><span class="v">ZAR</span></div><div class="srow"><span class="k">Time zone</span><span class="v">UTC +2</span></div><div class="srow"><span class="k">Avg climate</span><span class="v">23°C</span></div><div class="srow"><span class="k">Transit</span><span class="v">5–6 wks sea</span></div><div class="why">Climate, space and great value.</div><span class="slink">Explore South Africa <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a>
-    <a href="#" class="dcard"><img src="https://images.unsplash.com/photo-1466446105453-d151af699ac7?fm=jpg&q=74&w=700&auto=format&fit=crop" alt="New Zealand"><div class="veil"></div><div class="meta"><span class="country">New Zealand</span><span class="modes">Sea · Container</span></div><div class="snapshot"><div class="sc">New Zealand</div><div class="srow"><span class="k">Currency</span><span class="v">NZD</span></div><div class="srow"><span class="k">Time zone</span><span class="v">UTC +12</span></div><div class="srow"><span class="k">Avg climate</span><span class="v">17°C</span></div><div class="srow"><span class="k">Transit</span><span class="v">9–11 wks sea</span></div><div class="why">Clean, green and famously friendly.</div><span class="slink">Explore New Zealand <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a>
-    <a href="#" class="dcard"><img src="https://images.unsplash.com/photo-1752859672890-7ae108534f87?fm=jpg&q=74&w=700&auto=format&fit=crop" alt="Singapore"><div class="veil"></div><div class="meta"><span class="country">Singapore</span><span class="modes">Sea · Air</span></div><div class="snapshot"><div class="sc">Singapore</div><div class="srow"><span class="k">Currency</span><span class="v">SGD</span></div><div class="srow"><span class="k">Time zone</span><span class="v">UTC +8</span></div><div class="srow"><span class="k">Avg climate</span><span class="v">31°C</span></div><div class="srow"><span class="k">Transit</span><span class="v">4–5 wks sea</span></div><div class="why">Safe, modern and superbly connected.</div><span class="slink">Explore Singapore <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a>
-    <a href="#" class="dcard"><img src="https://images.unsplash.com/photo-1761309557902-3bbfedbe67ad?fm=jpg&q=74&w=700&auto=format&fit=crop" alt="Europe"><div class="veil"></div><div class="meta"><span class="country">Europe</span><span class="modes">Road · Sea</span></div><div class="snapshot"><div class="sc">Europe</div><div class="srow"><span class="k">Currency</span><span class="v">EUR</span></div><div class="srow"><span class="k">Time zone</span><span class="v">UTC +1</span></div><div class="srow"><span class="k">Avg climate</span><span class="v">18°C</span></div><div class="srow"><span class="k">Transit</span><span class="v">1–2 wks road</span></div><div class="why">Close to home, endlessly varied.</div><span class="slink">Explore Europe <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a>
+  <div class="sec-head reveal"><span class="eyebrow">Popular Destinations</span><h2>Where will <em>life take you?</em></h2><p>Pick a country to see currency, climate and transit times — then choose where to begin your move.</p></div>
+
+  <div class="dest-group reveal">
+    <div class="dest-glabel"><span>International</span></div>
+    <div class="pick-wrap">
+      <div class="pick-list" id="listIntl"></div>
+      <div class="pick-panel" id="panelIntl"></div>
+    </div>
+    <div class="dest-foot reveal"><a href="#">View all international destinations <svg width="14" height="14" viewBox="0 0 24 24" style="stroke:var(--gold-bright);fill:none;stroke-width:1.8"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
   </div>
-  <div class="dest-foot reveal"><a href="#">View all destinations <svg width="14" height="14" viewBox="0 0 24 24" style="stroke:var(--gold-bright);fill:none;stroke-width:1.8"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+
+  <div class="dest-group reveal">
+    <div class="dest-glabel"><span>Europe</span></div>
+    <div class="pick-wrap">
+      <div class="pick-list" id="listEuro"></div>
+      <div class="pick-panel" id="panelEuro"></div>
+    </div>
+    <div class="dest-foot reveal"><a href="#">View all European destinations <svg width="14" height="14" viewBox="0 0 24 24" style="stroke:var(--gold-bright);fill:none;stroke-width:1.8"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+  </div>
 </div></section>
 
 <section class="journey"><div class="jwrap"><div class="jsticky"><div class="wrap">
@@ -638,8 +663,7 @@ function animateStats(){document.querySelectorAll('.stat-num').forEach(el=>{cons
 
 const jwrap=document.querySelector('.jwrap'),jFill=document.getElementById('jFill'),stepEls=document.querySelectorAll('.steps .step'),N=stepEls.length;const jVehicle=document.getElementById('jVehicle'),vehVan=jVehicle?jVehicle.querySelector('.veh-van'):null,vehBoat=jVehicle?jVehicle.querySelector('.veh-boat'):null,SHIP_INDEX=3;function updateJourney(){if(!jwrap||!jFill)return;if(window.innerWidth<=1024){return}const rect=jwrap.getBoundingClientRect(),vh=window.innerHeight,total=rect.height-vh;let p=total>0?Math.min(Math.max(-rect.top,0),total)/total:0;const stage=Math.round(p*(N-1));const pct=stage/(N-1)*100;jFill.style.width=pct+'%';if(jVehicle){jVehicle.style.left=pct+'%';const isBoat=stage>=SHIP_INDEX;if(vehVan)vehVan.classList.toggle('show',!isBoat);if(vehBoat)vehBoat.classList.toggle('show',isBoat)}stepEls.forEach((el,i)=>{el.classList.toggle('done',i<=stage);el.classList.toggle('current',i===stage)})}window.addEventListener('scroll',updateJourney,{passive:true});window.addEventListener('resize',updateJourney);updateJourney();
 
-const isTouch=window.matchMedia('(hover: none)').matches;
-document.querySelectorAll('.dcard').forEach(c=>{c.addEventListener('click',e=>{if(isTouch){e.preventDefault();c.classList.toggle('show-snap')}})});
+
 
 document.querySelectorAll('.est-opt').forEach(opt=>{opt.addEventListener('click',()=>{document.querySelectorAll('.est-opt').forEach(o=>o.classList.remove('sel'));opt.classList.add('sel');document.getElementById('rvol').innerHTML=opt.dataset.vol+' <small>cu ft</small>';document.getElementById('rsub').textContent=opt.dataset.m3;document.getElementById('rrec').textContent=opt.dataset.rec;document.getElementById('rbar').style.width=opt.dataset.fill+'%'})});
 const eSel=document.querySelector('.est-opt.sel');if(eSel)document.getElementById('rbar').style.width=eSel.dataset.fill+'%';
@@ -715,6 +739,69 @@ if(miniCont)miniCont.addEventListener('click',()=>{window.location.href='quote.h
   });
 
   mnav.querySelectorAll('.mnav-panel a, .mnav-link, .mnav-cta, .mnav-brand, .mnav-phone').forEach(a=>a.addEventListener('click',closeMnav));
+})();
+
+/* Destination picker (Popular Destinations) */
+const DESTINATIONS = {
+  intl: [
+    {name:"Australia", slug:"australia.html", modes:"Sea · Air · Container", currency:"AUD", tz:"UTC +10", climate:"22°C", transit:"8–10 wks sea", why:"Beaches, space and the outdoor life.", img:"https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"New Zealand", slug:"new-zealand.html", modes:"Sea · Container", currency:"NZD", tz:"UTC +12", climate:"17°C", transit:"9–11 wks sea", why:"Clean, green and famously friendly.", img:"https://images.unsplash.com/photo-1466446105453-d151af699ac7?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"UAE & Dubai", slug:"uae.html", modes:"Sea · Air", currency:"AED", tz:"UTC +4", climate:"33°C", transit:"5–6 wks sea", why:"Tax-free living and year-round sun.", img:"https://images.unsplash.com/photo-1748626083682-611d0a66cb50?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"USA", slug:"usa.html", modes:"Sea · Air · Container", currency:"USD", tz:"UTC −5 to −8", climate:"18°C", transit:"6–8 wks sea", why:"Big opportunity, big-city energy.", img:"https://images.unsplash.com/photo-1765187275519-547fb2d0bb6a?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"Canada", slug:"canada.html", modes:"Sea · Air · Container", currency:"CAD", tz:"UTC −4 to −8", climate:"8°C", transit:"6–8 wks sea", why:"Nature, safety and a warm welcome.", img:"https://images.unsplash.com/photo-1558818061-547b1114aa6a?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"South Africa", slug:"south-africa.html", modes:"Sea · Container", currency:"ZAR", tz:"UTC +2", climate:"23°C", transit:"5–6 wks sea", why:"Climate, space and great value.", img:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?fm=jpg&q=74&w=1400&auto=format&fit=crop"}
+  ],
+  euro: [
+    {name:"Cyprus", slug:"cyprus.html", modes:"Sea · Air", currency:"EUR", tz:"UTC +2", climate:"20°C", transit:"3–4 wks sea", why:"Mediterranean island life with year-round sun.", img:"https://images.unsplash.com/photo-1677023484291-005b9840132f?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"Germany", slug:"germany.html", modes:"Road", currency:"EUR", tz:"UTC +1", climate:"10°C", transit:"1–2 wks road", why:"Central location, strong economy, excellent infrastructure.", img:"https://images.unsplash.com/photo-1599946347371-68eb71b16afc?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"Italy", slug:"italy.html", modes:"Road · Sea", currency:"EUR", tz:"UTC +1", climate:"15°C", transit:"2–3 wks road", why:"La dolce vita — history, cuisine and climate.", img:"https://images.unsplash.com/photo-1555992828-ca4dbe41d294?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"Malta", slug:"malta.html", modes:"Sea · Air", currency:"EUR", tz:"UTC +1", climate:"19°C", transit:"3–4 wks sea", why:"English-speaking, compact and steeped in history.", img:"https://images.unsplash.com/photo-1696159380859-2d6b563cfc4f?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"Portugal", slug:"portugal.html", modes:"Road · Sea", currency:"EUR", tz:"UTC +0", climate:"17°C", transit:"2–3 wks road", why:"Relaxed pace, coastline living and lower costs.", img:"https://images.unsplash.com/photo-1536663815808-535e2280d2c2?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"Spain", slug:"spain.html", modes:"Road · Sea", currency:"EUR", tz:"UTC +1", climate:"16°C", transit:"1–2 wks road", why:"Sunshine, culture and a thriving expat community.", img:"https://images.unsplash.com/photo-1659003587819-357640764fa6?fm=jpg&q=74&w=1400&auto=format&fit=crop"}
+  ]
+};
+
+(function(){
+  const arrowSvg = '<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+
+  function buildPicker(list, listId, panelId){
+    const listEl = document.getElementById(listId);
+    const panelEl = document.getElementById(panelId);
+    if(!listEl || !panelEl) return;
+
+    function renderPanel(d){
+      panelEl.innerHTML = `<img class="pp-img" src="${d.img}" alt="${d.name}"><div class="pp-overlay"></div>
+        <div class="pp-content">
+          <h3>${d.name}</h3>
+          <span class="pp-modes">${d.modes}</span>
+          <div class="pp-stats">
+            <div class="pp-stat"><div class="n">${d.currency}</div><div class="l">Currency</div></div>
+            <div class="pp-stat"><div class="n">${d.tz}</div><div class="l">Time zone</div></div>
+            <div class="pp-stat"><div class="n">${d.climate}</div><div class="l">Avg climate</div></div>
+            <div class="pp-stat"><div class="n">${d.transit}</div><div class="l">Transit</div></div>
+          </div>
+          <div class="pp-why">${d.why}</div>
+          <a class="pp-cta" href="${d.slug}">Visit ${d.name} page ${arrowSvg}</a>
+        </div>`;
+    }
+
+    list.forEach((d,i)=>{
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'pick-item' + (i===0 ? ' active' : '');
+      btn.innerHTML = `<span class="dot"></span>${d.name}`;
+      btn.addEventListener('click', ()=>{
+        listEl.querySelectorAll('.pick-item').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPanel(d);
+      });
+      listEl.appendChild(btn);
+    });
+    renderPanel(list[0]);
+  }
+
+  buildPicker(DESTINATIONS.intl, 'listIntl', 'panelIntl');
+  buildPicker(DESTINATIONS.euro, 'listEuro', 'panelEuro');
 })();
 </script>
 </body>
