@@ -559,49 +559,58 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
 
 
 
-/* Premium mobile refinements: dedicated manager feature + quieter menu treatment */
+/* Premium mobile refinements: dedicated manager feature + cleaner menu treatment */
 .move-manager-feature{background:linear-gradient(180deg,var(--paper) 0%,var(--cream) 100%);padding:clamp(4rem,8vw,7rem) clamp(1.25rem,4vw,3.5rem);position:relative;overflow:hidden}
 .move-manager-feature::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 18%,rgba(191,161,95,0.12),transparent 30%),radial-gradient(circle at 88% 92%,rgba(34,49,107,0.08),transparent 32%);pointer-events:none}
-.manager-card{position:relative;max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,5rem);align-items:center;background:rgba(255,255,255,0.58);border:1px solid rgba(191,161,95,0.26);box-shadow:0 34px 90px -54px rgba(20,29,59,0.5),inset 0 1px 0 rgba(255,255,255,0.7);border-radius:28px;padding:clamp(2rem,5vw,4rem);overflow:hidden}
+.manager-card{position:relative;max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.82fr);gap:clamp(1.8rem,4vw,4.5rem);align-items:center;background:rgba(255,255,255,0.58);border:1px solid rgba(191,161,95,0.26);box-shadow:0 34px 90px -54px rgba(20,29,59,0.5),inset 0 1px 0 rgba(255,255,255,0.7);border-radius:28px;padding:clamp(2rem,5vw,4rem);overflow:hidden}
 .manager-card::after{content:"";position:absolute;inset:12px;border:1px solid rgba(191,161,95,0.16);border-radius:22px;pointer-events:none}
+.manager-copy,.manager-media,.manager-proof{position:relative;z-index:1}
 .manager-eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--gold-deep);font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;margin-bottom:18px}
 .manager-eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
 .manager-card h2{font-family:'Cormorant Garamond',serif;font-weight:400;color:var(--navy-deep);font-size:clamp(2.1rem,4.2vw,3.75rem);line-height:1.04;margin-bottom:18px}
 .manager-card h2 em{font-style:italic;color:var(--gold-deep)}
 .manager-card p{color:rgba(29,34,48,.72);font-size:1rem;line-height:1.75;font-weight:300;max-width:560px}
-.manager-proof{display:grid;gap:14px;position:relative;z-index:1}
+.manager-media{min-height:360px;border-radius:26px;overflow:hidden;border:1px solid rgba(191,161,95,.28);box-shadow:0 32px 70px -48px rgba(20,29,59,.72);background:var(--navy-deep)}
+.manager-media img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.86) contrast(.96) brightness(.88)}
+.manager-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,29,59,.04),rgba(20,29,59,.52)),linear-gradient(135deg,rgba(191,161,95,.16),transparent 48%);pointer-events:none}
+.manager-caption{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;padding:15px 16px;border-radius:18px;background:rgba(20,29,59,.68);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.manager-caption span{display:block;color:rgba(216,189,132,.88);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:5px}
+.manager-caption strong{display:block;color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-weight:400;line-height:1.1}
+.manager-proof{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(.5rem,2vw,1.2rem)}
 .manager-proof-item{display:grid;grid-template-columns:auto 1fr;gap:15px;align-items:start;background:linear-gradient(135deg,rgba(20,29,59,.96),rgba(28,42,87,.92));color:#fff;border:1px solid rgba(191,161,95,.26);border-radius:18px;padding:18px 18px;box-shadow:0 22px 46px -34px rgba(20,29,59,.65)}
 .manager-proof-item .num{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(216,189,132,.13);border:1px solid rgba(216,189,132,.42);color:var(--gold-bright);font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1}
 .manager-proof-item strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;margin-bottom:4px;color:#fff}
 .manager-proof-item span:not(.num){display:block;color:rgba(255,255,255,.68);font-size:.82rem;line-height:1.55;font-weight:300}
 
-/* Mobile menu: editorial, quieter and more premium without a sticky CTA */
-.mnav::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 4%,rgba(216,189,132,.16),transparent 28%),radial-gradient(circle at 90% 96%,rgba(255,255,255,.06),transparent 34%);pointer-events:none}
+/* Mobile menu: cleaner premium treatment */
+.mnav::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 4%,rgba(216,189,132,.14),transparent 28%),radial-gradient(circle at 90% 96%,rgba(255,255,255,.055),transparent 34%);pointer-events:none}
 .mnav-top,.mnav-body,.mnav-foot{position:relative;z-index:1}
 .mnav-top{border-bottom:1px solid rgba(216,189,132,.12)}
-.mnav-phone{border-bottom:none;margin:12px 0 16px;padding:18px 18px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.14);border-radius:22px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.mnav-phone{border-bottom:none;margin:12px 0 20px;padding:18px 18px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.14);border-radius:22px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
 .mnav-phone-label{color:rgba(216,189,132,.78)}
 .mnav-phone-num{font-size:clamp(1.55rem,6vw,2rem)}
-.mnav-editorial{margin:4px 0 20px;padding:2px 2px 18px;border-bottom:1px solid rgba(216,189,132,.16)}
-.mnav-editorial .k{display:flex;align-items:center;gap:10px;color:rgba(216,189,132,.86);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:12px;font-weight:600}
-.mnav-editorial .k::before{content:"";width:28px;height:1px;background:rgba(216,189,132,.75)}
-.mnav-editorial p{font-family:'Cormorant Garamond',serif;color:#fff;font-size:1.58rem;line-height:1.12;font-weight:400;max-width:390px;margin:0 0 16px}
-.mnav-signature{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.mnav-signature span{display:flex;align-items:center;justify-content:center;min-height:38px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(255,255,255,.045);color:rgba(255,255,255,.72);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;text-align:center;padding:0 10px}
-.mnav-links{margin-top:2px}
+.mnav-links{margin-top:0;padding-top:10px;border-top:1px solid rgba(216,189,132,.14)}
 .mnav-toggle,.mnav-link{font-size:1.42rem;padding:20px 2px}
 .mnav-item,.mnav-link{border-bottom:1px solid rgba(255,255,255,.075)}
 .mnav-cta{background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.045));border:1px solid rgba(216,189,132,.48);color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.12);margin-top:24px}
 .mnav-foot{background:rgba(10,15,34,.18)}
+@media(max-width:900px){
+  .manager-card{grid-template-columns:1fr}
+  .manager-media{min-height:320px}
+  .manager-proof{grid-template-columns:1fr}
+}
 @media(max-width:768px){
   .move-manager-feature{padding:3.4rem 1.15rem}
-  .manager-card{display:block;border-radius:24px;padding:2rem 1.35rem 1.35rem;background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,253,249,.54));box-shadow:0 24px 64px -44px rgba(20,29,59,.55)}
+  .manager-card{display:block;border-radius:24px;padding:1.35rem;background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,253,249,.54));box-shadow:0 24px 64px -44px rgba(20,29,59,.55)}
   .manager-card::after{inset:9px;border-radius:18px}
   .manager-eyebrow{font-size:9.5px;letter-spacing:.2em;margin-bottom:13px}
   .manager-eyebrow::before{width:26px}
   .manager-card h2{font-size:2.22rem;margin-bottom:12px}
-  .manager-card p{font-size:.94rem;line-height:1.68;margin-bottom:20px}
-  .manager-proof{gap:10px}
+  .manager-card p{font-size:.94rem;line-height:1.68;margin-bottom:18px}
+  .manager-media{min-height:250px;border-radius:20px;margin:0 0 16px;box-shadow:0 22px 52px -38px rgba(20,29,59,.72)}
+  .manager-caption{left:12px;right:12px;bottom:12px;border-radius:15px;padding:12px 13px}
+  .manager-caption strong{font-size:1.12rem}
+  .manager-proof{gap:10px;margin-top:0}
   .manager-proof-item{border-radius:16px;padding:15px 14px;gap:12px}
   .manager-proof-item strong{font-size:1.12rem}
   .manager-proof-item span:not(.num){font-size:.78rem}
@@ -645,7 +654,6 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
         <span class="mnav-phone-label">Call our team</span>
         <span class="mnav-phone-num">01322 949 557<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
       </a>
-      <div class="mnav-editorial"><span class="k">Specialist overseas moves</span><p>Carefully managed international removals for families and individuals moving from the UK.</p><div class="mnav-signature"><span>Rated Excellent</span><span>Personal Service</span></div></div>
       <nav class="mnav-links">
         <div class="mnav-item">
           <button class="mnav-toggle" data-target="mnavIntl" aria-expanded="false">International Removals<svg class="mnav-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -729,11 +737,15 @@ body.msel-open .scroll-cue{opacity:0;pointer-events:none}
 
 <section class="move-manager-feature reveal" id="move-manager">
   <div class="manager-card">
-    <div>
+    <div class="manager-copy">
       <span class="manager-eyebrow">Your move manager</span>
       <h2>One dedicated contact for a <em>calmer move</em></h2>
       <p>International removals can feel complicated. Simpsons keeps the process personal, giving you one dedicated move manager to coordinate the details, answer questions and keep everything moving from first call to final delivery.</p>
     </div>
+    <figure class="manager-media">
+      <img src="https://images.pexels.com/photos/8962383/pexels-photo-8962383.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="Move manager reviewing documents with a customer at home" loading="lazy">
+      <figcaption class="manager-caption"><span>Personal guidance</span><strong>A single contact from survey to delivery</strong></figcaption>
+    </figure>
     <div class="manager-proof" aria-label="How your dedicated move manager helps">
       <div class="manager-proof-item"><span class="num">1</span><span><strong>One clear point of contact</strong><span>No feeling passed around. You know who is looking after your move.</span></span></div>
       <div class="manager-proof-item"><span class="num">2</span><span><strong>Every stage coordinated</strong><span>Survey, quote, packing, shipping and delivery are kept joined up.</span></span></div>
