@@ -1129,12 +1129,12 @@ if(miniCont)miniCont.addEventListener('click',()=>{
 /* Destination picker (Popular Destinations) */
 const DESTINATIONS = {
   intl: [
-    {name:"Australia", slug:"australia.html", modes:"Sea · Air · Container", currency:"AUD", tz:"UTC +10", climate:"22°C", transit:"8–10 wks sea", why:"Beaches, space and the outdoor life.", img:"https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
-    {name:"New Zealand", slug:"new-zealand.html", modes:"Sea · Container", currency:"NZD", tz:"UTC +12", climate:"17°C", transit:"9–11 wks sea", why:"Clean, green and famously friendly.", img:"https://images.unsplash.com/photo-1466446105453-d151af699ac7?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
-    {name:"UAE & Dubai", slug:"uae.html", modes:"Sea · Air", currency:"AED", tz:"UTC +4", climate:"33°C", transit:"5–6 wks sea", why:"Tax-free living and year-round sun.", img:"https://images.unsplash.com/photo-1748626083682-611d0a66cb50?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
-    {name:"USA", slug:"usa.html", modes:"Sea · Air · Container", currency:"USD", tz:"UTC −5 to −8", climate:"18°C", transit:"6–8 wks sea", why:"Big opportunity, big-city energy.", img:"https://images.unsplash.com/photo-1765187275519-547fb2d0bb6a?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
-    {name:"Canada", slug:"canada.html", modes:"Sea · Air · Container", currency:"CAD", tz:"UTC −4 to −8", climate:"8°C", transit:"6–8 wks sea", why:"Nature, safety and a warm welcome.", img:"https://images.unsplash.com/photo-1558818061-547b1114aa6a?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
-    {name:"South Africa", slug:"south-africa.html", modes:"Sea · Container", currency:"ZAR", tz:"UTC +2", climate:"23°C", transit:"5–6 wks sea", why:"Climate, space and great value.", img:"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?fm=jpg&q=74&w=1400&auto=format&fit=crop"}
+    {name:"Australia", slug:"australia.html", modes:"Sea · Air · Container", currency:"AUD", tz:"UTC +10", climate:"22°C", transit:"8–10 wks sea", why:"Beaches, space and the outdoor life.", img:"https://images.unsplash.com/photo-1683606095922-cda452e83878?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"New Zealand", slug:"new-zealand.html", modes:"Sea · Container", currency:"NZD", tz:"UTC +12", climate:"17°C", transit:"9–11 wks sea", why:"Clean, green and famously friendly.", img:"https://images.unsplash.com/photo-1693709225887-e4904a141614?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"UAE & Dubai", slug:"uae.html", modes:"Sea · Air", currency:"AED", tz:"UTC +4", climate:"33°C", transit:"5–6 wks sea", why:"Tax-free living and year-round sun.", img:"https://images.unsplash.com/photo-1745750434535-5943ef2fd31a?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"USA", slug:"usa.html", modes:"Sea · Air · Container", currency:"USD", tz:"UTC −5 to −8", climate:"18°C", transit:"6–8 wks sea", why:"Big opportunity, big-city energy.", img:"https://images.unsplash.com/photo-1764782979306-1e489462d895?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"Canada", slug:"canada.html", modes:"Sea · Air · Container", currency:"CAD", tz:"UTC −4 to −8", climate:"8°C", transit:"6–8 wks sea", why:"Nature, safety and a warm welcome.", img:"https://images.unsplash.com/photo-1756212232110-50fce698adc5?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
+    {name:"South Africa", slug:"south-africa.html", modes:"Sea · Container", currency:"ZAR", tz:"UTC +2", climate:"23°C", transit:"5–6 wks sea", why:"Climate, space and great value.", img:"https://images.unsplash.com/photo-1770988966522-4eea7f83dbe9?fm=jpg&q=74&w=1400&auto=format&fit=crop"}
   ],
   euro: [
     {name:"Cyprus", slug:"cyprus.html", modes:"Sea · Air", currency:"EUR", tz:"UTC +2", climate:"20°C", transit:"3–4 wks sea", why:"Mediterranean island life with year-round sun.", img:"https://images.unsplash.com/photo-1677023484291-005b9840132f?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
@@ -1142,7 +1142,7 @@ const DESTINATIONS = {
     {name:"Italy", slug:"italy.html", modes:"Road · Sea", currency:"EUR", tz:"UTC +1", climate:"15°C", transit:"2–3 wks road", why:"La dolce vita — history, cuisine and climate.", img:"https://images.unsplash.com/photo-1555992828-ca4dbe41d294?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
     {name:"Malta", slug:"malta.html", modes:"Sea · Air", currency:"EUR", tz:"UTC +1", climate:"19°C", transit:"3–4 wks sea", why:"English-speaking, compact and steeped in history.", img:"https://images.unsplash.com/photo-1696159380859-2d6b563cfc4f?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
     {name:"Portugal", slug:"portugal.html", modes:"Road · Sea", currency:"EUR", tz:"UTC +0", climate:"17°C", transit:"2–3 wks road", why:"Relaxed pace, coastline living and lower costs.", img:"https://images.unsplash.com/photo-1536663815808-535e2280d2c2?fm=jpg&q=74&w=1400&auto=format&fit=crop"},
-    {name:"Spain", slug:"spain.html", modes:"Road · Sea", currency:"EUR", tz:"UTC +1", climate:"16°C", transit:"1–2 wks road", why:"Sunshine, culture and a thriving expat community.", img:"https://images.unsplash.com/photo-1659003587819-357640764fa6?fm=jpg&q=74&w=1400&auto=format&fit=crop"}
+    {name:"Spain", slug:"spain.html", modes:"Road · Sea", currency:"EUR", tz:"UTC +1", climate:"16°C", transit:"1–2 wks road", why:"Sunshine, culture and a thriving expat community.", img:"https://images.unsplash.com/photo-1758471206484-0eaa2568320c?fm=jpg&q=74&w=1400&auto=format&fit=crop"}
   ]
 };
 
