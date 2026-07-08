@@ -201,6 +201,18 @@ section{padding:clamp(4.5rem,8vw,7.5rem) clamp(1.25rem,4vw,3.5rem)}
 .step h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--navy);font-weight:500;margin-bottom:7px}
 .step p{font-size:0.8rem;color:var(--muted);font-weight:300;line-height:1.6;max-width:180px;margin:0 auto}
 
+@media(min-width:1025px){
+  .steps{--step-gap:1rem;overflow:visible}
+  .steps-track{background:transparent!important;height:2px;z-index:0;overflow:visible;pointer-events:none}
+  .steps-fill{display:none!important}
+  .step{overflow:visible}
+  .step:not(:last-child)::after{content:"";position:absolute;top:32px;left:calc(50% + 46px);width:calc(100% + var(--step-gap) - 92px);height:2px;border-radius:999px;background:linear-gradient(90deg,var(--navy) 0 var(--seg-fill,0%),rgba(34,49,107,0.14) var(--seg-fill,0%) 100%);z-index:0;transition:background .12s linear}
+  .step .dot{z-index:2;box-shadow:0 0 0 12px var(--paper)}
+  .step.current .dot{box-shadow:0 0 0 12px var(--paper)}
+  .step h4,.step p{position:relative;z-index:2}
+}
+
+
 .estimator{background:var(--cream)}
 .est-wrap{max-width:1040px;margin:0 auto}
 .est-options{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:2.2rem}
@@ -490,6 +502,8 @@ body.mnav-locked{overflow:hidden}
 
 .step.done{opacity:1;transform:none}
 @media(max-width:1024px){.step{opacity:1;transform:none}}
+@media(max-width:1024px){.step:not(:last-child)::after{display:none!important}.step .dot{box-shadow:none!important}}
+
 
 @media(max-width:768px){
   .steps{display:flex;flex-direction:column;gap:2.6rem;position:relative;margin-top:2.75rem}
@@ -522,12 +536,12 @@ body.mnav-locked{overflow:hidden}
 .scroll-cue{transition:opacity .3s ease}
 body.msel-open .scroll-cue{opacity:0;pointer-events:none}
 
-.steps-vehicle{position:absolute;top:50%;left:0%;width:40px;height:30px;transition:left .12s linear;animation:vehBob 2.8s ease-in-out infinite;z-index:2;pointer-events:none}
+.steps-vehicle{position:absolute;top:50%;left:0%;width:52px;height:34px;transition:left .12s linear;animation:vehBob 2.8s ease-in-out infinite;z-index:0;pointer-events:none}
 @keyframes vehBob{0%,100%{transform:translate(-50%,-58%)}50%{transform:translate(-50%,-46%)}}
 .steps-vehicle .veh{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .5s ease}
 .steps-vehicle .veh.show{opacity:1}
-.veh-i{fill:none;stroke:var(--navy);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.veh-i.faintline{stroke:rgba(34,49,107,0.35);stroke-width:1.2}
+.veh-i{fill:none;stroke:var(--navy);stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.veh-i.faintline{stroke:rgba(34,49,107,0.30);stroke-width:1.15}
 @media(max-width:1024px){.steps-vehicle{display:none}}
 
 
@@ -828,11 +842,11 @@ h1 .highlight,h2 .highlight,h3 .highlight,h4 .highlight,h5 .highlight,h6 .highli
 <section class="journey"><div class="jwrap"><div class="jsticky"><div class="wrap">
   <div class="sec-head reveal"><span class="eyebrow">Your Journey</span><h2>From first call to final delivery</h2><p>Moving abroad should feel effortless. We guide you through every step, so all you have to think about is your new life ahead.</p></div>
   <div class="steps">
-    <div class="steps-track"><div class="steps-fill" id="jFill"></div><div class='steps-vehicle' id='jVehicle'><svg class='veh veh-van' viewBox='0 0 40 30'><path class='veh-i' d='M3 21V11a1 1 0 0 1 1-1h13l6 6h11a2 2 0 0 1 2 2v3'/><path class='veh-i' d='M3 21h1M35 21h2v-3'/><circle class='veh-i' cx='11' cy='22.5' r='2.6'/><circle class='veh-i' cx='29' cy='22.5' r='2.6'/><path class='veh-i' d='M8 22.5h1M32 22.5h5'/></svg><svg class='veh veh-boat' viewBox='0 0 40 30'><path class='veh-i' d='M3 19h34l-4 7H7z'/><path class='veh-i' d='M14 19V9h9l4 10'/><path class='veh-i' d='M20 9V4'/><path class='veh-i faintline' d='M0 27c4-2 7-2 11 0s7 2 11 0 7-2 11 0 6 2 7 1'/></svg></div></div>
+    <div class="steps-track"><div class="steps-fill" id="jFill"></div><div class='steps-vehicle' id='jVehicle'><svg class='veh veh-van' viewBox='0 0 64 32' aria-hidden='true'><path class='veh-i' d='M5 22V8.5c0-1.2.9-2.1 2.1-2.1H39v15.6H5z'/><path class='veh-i' d='M39 13h8.5l7.5 7v2H39z'/><path class='veh-i' d='M9 11h25M9 16h25M9 21h25'/><path class='veh-i' d='M44 16h5.2l3.2 3H44z'/><circle class='veh-i' cx='16' cy='25.5' r='3.1'/><circle class='veh-i' cx='48' cy='25.5' r='3.1'/><path class='veh-i' d='M3 25.5h9M19.5 25.5h25M51.5 25.5H60'/></svg><svg class='veh veh-boat' viewBox='0 0 64 32' aria-hidden='true'><path class='veh-i' d='M5 20.5h54l-5.5 8H13z'/><path class='veh-i' d='M13 17h33.5l5.5 3.5'/><path class='veh-i' d='M17 12h8v5h-8zM27.5 12h8v5h-8zM38 12h8v5h-8z'/><path class='veh-i' d='M47 8h7l2 9h-9z'/><path class='veh-i faintline' d='M3 30c5-2 10-2 15 0s10 2 15 0 10-2 15 0 9 2 13 0'/></svg></div></div>
     <div class="step"><div class="dot"><span class="n">1</span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9z"/><path d="M8.5 13l2 2 4-4"/></svg></div><h4>Survey</h4><p>A free home or video survey to understand exactly what's moving.</p></div>
     <div class="step"><div class="dot"><span class="n">2</span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div><h4>Quote</h4><p>A clear, detailed quotation tailored to your destination and service.</p></div>
     <div class="step"><div class="dot"><span class="n">3</span><svg viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></div><h4>Pack</h4><p>Our specialists carefully pack and protect every item with pro-grade materials.</p></div>
-    <div class="step"><div class="dot"><span class="n">4</span><svg viewBox="0 0 24 24"><path d="M3 16l2-7h14l2 7M5 16h14M2 20h20M12 9V4"/></svg></div><h4>Ship</h4><p>Transported by road, sea or air — tracked and fully insured throughout.</p></div>
+    <div class="step"><div class="dot"><span class="n">4</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16h18l-2.3 4H5.3z"/><path d="M5.5 13h11.5l4 3"/><path d="M7 10h4v3H7zM12.5 10h4v3h-4z"/><path d="M16.5 7h3l1.2 6h-4.2z"/><path d="M2.5 21.5c2.5-1 5-1 7.5 0s5 1 7.5 0 3.5-.9 4.5-.4"/></svg></div><h4>Ship</h4><p>Transported by road, sea or air — tracked and fully insured throughout.</p></div>
     <div class="step"><div class="dot"><span class="n">5</span><svg viewBox="0 0 24 24"><path d="M4 11l8-6 8 6v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9.5 14l1.5 1.5 3.5-3.5"/></svg></div><h4>Deliver</h4><p>Unloaded and placed in your new home, ready to start the next chapter.</p></div>
   </div>
 </div></div></div></section>
@@ -963,6 +977,10 @@ function setJourneyProgress(p){
   stepEls.forEach((el,i)=>{
     el.classList.toggle('done',i<=stage);
     el.classList.toggle('current',i===stage);
+    if(i<N-1){
+      const segP=Math.min(Math.max((p*(N-1))-i,0),1);
+      el.style.setProperty('--seg-fill',(segP*100)+'%');
+    }
   });
 }
 function collapseJourneyAfterExit(){
