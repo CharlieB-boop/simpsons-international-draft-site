@@ -741,6 +741,35 @@ h1 .highlight,h2 .highlight,h3 .highlight,h4 .highlight,h5 .highlight,h6 .highli
   color:inherit!important;
 }
 
+
+
+/* Refined journey transport marker: no backing box, icon sits above route line */
+@media(min-width:1025px){
+  .steps-track{z-index:2;overflow:visible!important}
+  .steps-vehicle{
+    width:70px;
+    height:42px;
+    top:50%;
+    z-index:1;
+    opacity:.92;
+    transform:translate(-50%,-178%);
+    transition:left .12s linear, opacity .2s ease;
+  }
+  .steps-vehicle::before{display:none!important}
+  .steps-vehicle.is-van{animation:none!important;transform:translate(-50%,-178%)}
+  .steps-vehicle.is-boat{animation:journeyShipBob 2.8s ease-in-out infinite}
+  @keyframes journeyShipBob{
+    0%,100%{transform:translate(-50%,-184%)}
+    50%{transform:translate(-50%,-172%)}
+  }
+  .steps-vehicle .veh{filter:drop-shadow(0 5px 6px rgba(20,29,59,.16))}
+  .steps-vehicle .veh-i{stroke:var(--navy);stroke-width:1.55}
+  .steps-vehicle .veh-i.faintline{display:none!important}
+  .steps .step{z-index:3}
+  .steps .step .dot{z-index:5;box-shadow:0 0 0 14px var(--paper)}
+  .steps .step:not(:last-child)::after{z-index:-1}
+}
+
 </style>
 </head>
 <body>
