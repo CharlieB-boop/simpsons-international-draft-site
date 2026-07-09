@@ -413,6 +413,17 @@ footer{background:var(--navy-deep);padding:clamp(3.5rem,6vw,5rem) clamp(1.25rem,
 .msel-sub{font-family:'Poppins',sans-serif;font-size:10px;font-weight:300;letter-spacing:0.03em;color:rgba(255,255,255,0.72);text-shadow:0 1px 6px rgba(15,21,45,0.45);text-transform:none;margin-top:1px}
 .msel-menu::-webkit-scrollbar{width:8px}.msel-menu::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.28);border-radius:4px}.msel-menu::-webkit-scrollbar-track{background:transparent}
 .scroll-cue{transition:opacity .3s ease}
+
+.msel-search-wrap{position:sticky;top:-8px;z-index:3;background:rgba(20,31,58,0.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:8px;margin:-8px -8px 6px;border-radius:16px 16px 10px 10px;border-bottom:1px solid rgba(255,255,255,0.14)}
+.msel-search{width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,0.28);border-radius:999px;background:rgba(255,255,255,0.16);color:#fff;padding:10px 14px;font-family:'Poppins',sans-serif;font-size:12px;outline:none}
+.msel-search::placeholder{color:rgba(255,255,255,0.68)}
+.msel-opt.is-hidden{display:none}
+.msel-empty{display:none;color:rgba(255,255,255,0.72);font-family:'Poppins',sans-serif;font-size:11px;line-height:1.45;padding:10px 14px;text-align:left}.msel-empty.show{display:block}
+.qz-search-wrap{position:sticky;top:0;z-index:5;background:rgba(15,21,45,0.96);padding:0 0 10px;margin-bottom:6px}
+.qz-search{width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,0.18);border-radius:999px;background:rgba(255,255,255,0.08);color:#fff;padding:13px 16px;font-family:'Poppins',sans-serif;font-size:13px;outline:none}
+.qz-search::placeholder{color:rgba(255,255,255,0.58)}
+.qz-opt.is-hidden{display:none}.qz-empty{display:none;color:rgba(255,255,255,0.62);font-size:13px;padding:12px 4px}.qz-empty.show{display:block}
+
 body.msel-open .scroll-cue{opacity:0;pointer-events:none}
 
 .steps-vehicle{position:absolute;top:50%;left:0%;width:40px;height:30px;transition:left .55s cubic-bezier(.33,0,.2,1);animation:vehBob 2.8s ease-in-out infinite;z-index:2;pointer-events:none}
@@ -663,6 +674,248 @@ function megaOpen(id){clearTimeout(megaTimer);megaPanels.forEach(m=>m.classList.
 function megaSched(){megaTimer=setTimeout(megaCloseAll,180)}
 megaTriggers.forEach(tr=>{tr.addEventListener('mouseenter',()=>megaOpen(tr.dataset.mega));tr.addEventListener('mouseleave',megaSched);tr.addEventListener('click',e=>{e.preventDefault();const m=document.getElementById('mega-'+tr.dataset.mega);const willOpen=!m.classList.contains('open');megaCloseAll();if(willOpen)megaOpen(tr.dataset.mega)})});
 megaPanels.forEach(m=>{m.addEventListener('mouseenter',()=>clearTimeout(megaTimer));m.addEventListener('mouseleave',megaSched)});
+
+
+const simpsonsFromLocations=[
+  'Outside the UK',
+  'London',
+  'South London',
+  'North London',
+  'East London',
+  'West London',
+  'Central London',
+  'Croydon',
+  'Bromley',
+  'Sutton',
+  'Wimbledon',
+  'Kingston upon Thames',
+  'Richmond',
+  'Twickenham',
+  'Ealing',
+  'Harrow',
+  'Hillingdon',
+  'Islington',
+  'Camden',
+  'Hackney',
+  'Kensington',
+  'Chelsea',
+  'Hammersmith',
+  'Fulham',
+  'Wandsworth',
+  'Clapham',
+  'Greenwich',
+  'Lewisham',
+  'Bexley',
+  'Dartford',
+  'Gravesend',
+  'Sevenoaks',
+  'Maidstone',
+  'Canterbury',
+  'Ashford',
+  'Tunbridge Wells',
+  'Tonbridge',
+  'Folkestone',
+  'Medway',
+  'Rochester',
+  'Gillingham',
+  'Sittingbourne',
+  'Dover',
+  'Essex',
+  'Chelmsford',
+  'Colchester',
+  'Rainham',
+  'Romford',
+  'Ilford',
+  'Basildon',
+  'Southend-on-Sea',
+  'Brentwood',
+  'Harlow',
+  'Loughton',
+  'Epping',
+  'Braintree',
+  'Clacton-on-Sea',
+  'Surrey',
+  'Guildford',
+  'Woking',
+  'Epsom',
+  'Redhill',
+  'Reigate',
+  'Dorking',
+  'Leatherhead',
+  'Staines-upon-Thames',
+  'Weybridge',
+  'Camberley',
+  'Farnham',
+  'Crawley',
+  'Horsham',
+  'Worthing',
+  'Brighton',
+  'Hove',
+  'Eastbourne',
+  'Hastings',
+  'St Leonards-on-Sea',
+  'Chichester',
+  'Bognor Regis',
+  'Portsmouth',
+  'Southampton',
+  'Winchester',
+  'Basingstoke',
+  'Andover',
+  'New Forest',
+  'Reading',
+  'Slough',
+  'Windsor',
+  'Maidenhead',
+  'Bracknell',
+  'Newbury',
+  'Oxford',
+  'High Wycombe',
+  'Aylesbury',
+  'Milton Keynes',
+  'Luton',
+  'St Albans',
+  'Watford',
+  'Hemel Hempstead',
+  'Stevenage',
+  'Cambridge',
+  'Peterborough',
+  'Norwich',
+  'Ipswich',
+  'Bury St Edmunds',
+  'Bedford',
+  'Northampton',
+  'Leicester',
+  'Nottingham',
+  'Derby',
+  'Lincoln',
+  'Birmingham',
+  'Solihull',
+  'Coventry',
+  'Wolverhampton',
+  'Walsall',
+  'Dudley',
+  'West Bromwich',
+  'Sutton Coldfield',
+  'Warwick',
+  'Leamington Spa',
+  'Worcester',
+  'Gloucester',
+  'Cheltenham',
+  'Hereford',
+  'Bristol',
+  'Bath',
+  'Weston-super-Mare',
+  'Swindon',
+  'Salisbury',
+  'Exeter',
+  'Plymouth',
+  'Torquay',
+  'Bournemouth',
+  'Poole',
+  'Dorchester',
+  'Truro',
+  'Redruth',
+  'Falmouth',
+  'Penzance',
+  'Manchester',
+  'Salford',
+  'Stockport',
+  'Bolton',
+  'Bury',
+  'Oldham',
+  'Rochdale',
+  'Wigan',
+  'Warrington',
+  'Preston',
+  'Blackpool',
+  'Liverpool',
+  'Wirral',
+  'St Helens',
+  'Chester',
+  'Crewe',
+  'Macclesfield',
+  'Leeds',
+  'Bradford',
+  'Wakefield',
+  'Huddersfield',
+  'York',
+  'Harrogate',
+  'Sheffield',
+  'Doncaster',
+  'Rotherham',
+  'Barnsley',
+  'Hull',
+  'Middlesbrough',
+  'Newcastle upon Tyne',
+  'Gateshead',
+  'Sunderland',
+  'Durham',
+  'Darlington',
+  'Carlisle',
+  'Edinburgh',
+  'Glasgow',
+  'Aberdeen',
+  'Dundee',
+  'Inverness',
+  'Stirling',
+  'Perth',
+  'Bathgate',
+  'Paisley',
+  'Hamilton',
+  'Ayr',
+  'Cardiff',
+  'Swansea',
+  'Newport',
+  'Wrexham',
+  'Bangor',
+  'Belfast',
+  'Lisburn',
+  'Derry / Londonderry',
+  'Newry',
+  'Dublin',
+  'Cork',
+  'Galway',
+  'Limerick',
+  'Other UK location'
+];
+function simpsonsFromOptHtml(name){
+  if(name==='Outside the UK')return '<div class="msel-opt" data-v="Outside the UK" data-search="outside uk international overseas partner network">Outside the UK<span class="msel-sub">via our partner network</span></div>';
+  return '<div class="msel-opt" data-v="'+name.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')+'" data-search="'+name.toLowerCase().replace(/&/g,'and')+'">'+name.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</div>';
+}
+function simpsonsBuildFromPickers(){
+  document.querySelectorAll('.msel[data-role="from"] .msel-menu').forEach(menu=>{
+    menu.innerHTML='<div class="msel-search-wrap"><input class="msel-search" type="text" placeholder="Type your town, city or area" autocomplete="off"></div><div class="msel-grp">Popular UK locations</div>'+simpsonsFromLocations.map(simpsonsFromOptHtml).join('')+'<div class="msel-empty">No matching places. Choose Other UK location.</div>';
+    const input=menu.querySelector('.msel-search');
+    const empty=menu.querySelector('.msel-empty');
+    input.addEventListener('click',e=>e.stopPropagation());
+    input.addEventListener('keydown',e=>e.stopPropagation());
+    input.addEventListener('input',()=>{
+      const q=input.value.trim().toLowerCase();let shown=0;
+      menu.querySelectorAll('.msel-opt').forEach(opt=>{
+        const label=(opt.getAttribute('data-v')||opt.textContent).trim().toLowerCase();
+        const hay=(opt.dataset.search||opt.textContent).toLowerCase();
+        const hit=!q||label==='other uk location'||hay.includes(q);
+        opt.classList.toggle('is-hidden',!hit);if(hit)shown++;
+      });
+      if(empty)empty.classList.toggle('show',shown===0);
+    });
+  });
+  document.querySelectorAll('.qz-pick-list[data-for="from"]').forEach(list=>{
+    list.innerHTML='<div class="qz-search-wrap"><input class="qz-search" type="text" placeholder="Type your town, city or area" autocomplete="off"></div><button class="qz-opt" data-v="Outside the UK" type="button">Outside the UK<span class="qz-osub">via our partner network</span></button><div class="qz-grp">Popular UK locations</div>'+simpsonsFromLocations.filter(n=>n!=='Outside the UK').map(n=>'<button class="qz-opt" data-v="'+n.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')+'" data-search="'+n.toLowerCase().replace(/&/g,'and')+'" type="button">'+n.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</button>').join('')+'<div class="qz-empty">No matching places. Choose Other UK location.</div>';
+    const input=list.querySelector('.qz-search');const empty=list.querySelector('.qz-empty');
+    if(input){
+      input.addEventListener('input',()=>{
+        const q=input.value.trim().toLowerCase();let shown=0;
+        list.querySelectorAll('.qz-opt').forEach(opt=>{
+          const hit=!q||(opt.dataset.search||opt.textContent).toLowerCase().includes(q);
+          opt.classList.toggle('is-hidden',!hit);if(hit)shown++;
+        });
+        if(empty)empty.classList.toggle('show',shown===0);
+      });
+    }
+  });
+}
+simpsonsBuildFromPickers();
 
 function syncCue(){document.body.classList.toggle('msel-open',!!document.querySelector('.msel.open'))}function fitMenu(sel){const menu=sel.querySelector('.msel-menu'),btn=sel.querySelector('.msel-btn'),frame=sel.closest('[data-hero-frame]');if(!menu||!btn)return;const btnRect=btn.getBoundingClientRect();let available;if(frame){available=frame.getBoundingClientRect().bottom-btnRect.bottom-20}else{available=window.innerHeight-btnRect.bottom-24}menu.style.maxHeight=Math.max(90,Math.min(380,available))+'px'}document.querySelectorAll('.msel').forEach(sel=>{const btn=sel.querySelector('.msel-btn'),val=sel.querySelector('.msel-val');btn.addEventListener('click',e=>{e.stopPropagation();const wasOpen=sel.classList.contains('open');document.querySelectorAll('.msel').forEach(s=>s.classList.remove('open'));if(!wasOpen){sel.classList.add('open');fitMenu(sel)}syncCue()});sel.querySelectorAll('.msel-opt').forEach(opt=>{opt.addEventListener('click',e=>{e.stopPropagation();val.textContent=opt.getAttribute('data-v')||opt.firstChild.textContent.trim();sel.classList.add('selected');sel.classList.remove('open');syncCue()})});});document.addEventListener('click',()=>{document.querySelectorAll('.msel').forEach(s=>s.classList.remove('open'));syncCue()});window.addEventListener('resize',()=>{const o=document.querySelector('.msel.open');if(o)fitMenu(o)});
 
