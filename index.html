@@ -101,10 +101,15 @@ section{padding:clamp(4.5rem,8vw,7.5rem) clamp(1.25rem,4vw,3.5rem)}
 .about{background:var(--cream)}
 .about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2.5rem,5vw,5.5rem);align-items:center}
 .about-figure{position:relative}
-.about-figure .frame{position:absolute;inset:-16px -16px 16px 16px;border:1px solid transparent;background:linear-gradient(var(--cream),var(--cream)) padding-box,linear-gradient(115deg,var(--gold) 30%,var(--gold-bright) 50%,var(--gold) 70%) border-box;background-size:100% 100%,260% 100%;background-repeat:no-repeat;animation:goldShimmer 5s ease-in-out infinite;z-index:0}
-@keyframes goldShimmer{0%{background-position:0 0,0% 0%}50%{background-position:0 0,100% 0%}100%{background-position:0 0,0% 0%}}
+.about-figure .frame{position:absolute;inset:-16px -16px 16px 16px;border:1px solid var(--gold);z-index:0;overflow:hidden}
+.about-figure .frame::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(216,189,132,.6) 50%,transparent 65%);transform:translateX(-160%)}
+.about-figure.in .frame::after{animation:goldSweep 1.3s ease-out .5s 1}
+@keyframes goldSweep{to{transform:translateX(160%)}}
 .about-figure .photo{width:100%;height:520px;background-image:url("images/about.jpg");background-size:cover;background-position:center;position:relative;z-index:1}
-.about-figure .badge{position:absolute;z-index:2;right:-18px;bottom:42px;color:#fff;padding:22px 28px;text-align:center;border:1px solid transparent;background:linear-gradient(var(--navy-deep),var(--navy-deep)) padding-box,linear-gradient(115deg,rgba(191,161,95,0.5) 30%,var(--gold-bright) 50%,rgba(191,161,95,0.5) 70%) border-box;background-size:100% 100%,260% 100%;background-repeat:no-repeat;animation:goldShimmer 5s ease-in-out infinite}
+.about-figure .badge{position:absolute;z-index:2;right:-18px;bottom:42px;background:var(--navy-deep);color:#fff;padding:22px 28px;text-align:center;border:1px solid rgba(191,161,95,0.4);overflow:hidden}
+.about-figure .badge::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(216,189,132,.55) 50%,transparent 65%);transform:translateX(-160%);z-index:1}
+.about-figure.in .badge::after{animation:goldSweep 1.3s ease-out .75s 1}
+.about-figure .badge .n,.about-figure .badge .t{position:relative;z-index:2}
 .about-figure .badge .n{font-family:'Cormorant Garamond',serif;font-size:2.6rem;line-height:1;color:var(--cream)}
 .about-figure .badge .t{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:6px}
 .about-body .eyebrow{display:block;margin-bottom:18px}
