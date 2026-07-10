@@ -118,6 +118,10 @@ section{padding:clamp(4.5rem,8vw,7.5rem) clamp(1.25rem,4vw,3.5rem)}
 .dest .sec-head{margin-bottom:clamp(2.25rem,3.5vw,3rem)}
 .dest .sec-head h2{color:#fff}.dest .sec-head h2 em{color:#fff}
 .dest .sec-head .eyebrow{color:rgba(255,255,255,0.6)}.dest .sec-head p{color:rgba(255,255,255,0.6)}
+.why .sec-head h2{color:#fff}
+.why .sec-head h2 em{color:#fff}
+.why .sec-head .eyebrow{color:rgba(255,255,255,0.6)}
+.why .sec-head p{color:rgba(255,255,255,0.6)}
 .dest-group{margin-top:2.4rem}
 .dest-group:first-of-type{margin-top:0}
 .dest-glabel{display:flex;align-items:center;gap:16px;margin-bottom:1.4rem}
@@ -239,18 +243,19 @@ section{padding:clamp(4.5rem,8vw,7.5rem) clamp(1.25rem,4vw,3.5rem)}
 .est-side a.btn-quote:hover{background:var(--navy);color:#fff}
 .est-side a.btn-quote svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}
 
-.why{background:var(--cream)}
+.why{background:var(--navy)}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,4vw,3.5rem)}
 .why-card{text-align:center;padding:1rem}
 .why-icon{width:96px;height:96px;margin:0 auto 26px}
 .why-icon svg{width:96px;height:96px;overflow:visible}
 .sk{fill:none;stroke:var(--gold);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 .sk2{fill:none;stroke:var(--navy);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.why .sk2{stroke:var(--gold-bright)}
 .draw{stroke-dasharray:var(--len,400);stroke-dashoffset:var(--len,400);transition:stroke-dashoffset 1.6s ease}
 .why-card.in .draw{stroke-dashoffset:0}
-.why-card h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.5rem;color:var(--navy);margin-bottom:8px}
+.why-card h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.5rem;color:#fff;margin-bottom:8px}
 .why-card .gr{width:34px;height:1px;background:var(--gold);margin:0 auto 16px}
-.why-card p{color:var(--muted);font-weight:300;font-size:0.9rem;line-height:1.75;max-width:300px;margin:0 auto}
+.why-card p{color:rgba(255,255,255,0.68);font-weight:300;font-size:0.9rem;line-height:1.75;max-width:300px;margin:0 auto}
 .orbit{transform-box:view-box;transform-origin:48px 48px;animation:orbit 8s linear infinite}
 @keyframes orbit{to{transform:rotate(360deg)}}
 .globe-spin{transform-box:view-box;transform-origin:48px 48px;animation:gspin 6s ease-in-out infinite}
@@ -294,16 +299,16 @@ section{padding:clamp(4.5rem,8vw,7.5rem) clamp(1.25rem,4vw,3.5rem)}
 .testi .tp .tp-stars{color:#00b67a;letter-spacing:1px}
 .testi .tp span{color:rgba(255,255,255,0.75);font-size:11.5px}.testi .tp b{color:#fff;font-weight:500}
 
-.cta-band{background:var(--cream);text-align:center}
+.cta-band{background:var(--navy-deep);text-align:center;border-top:1px solid rgba(191,161,95,0.16);border-bottom:1px solid rgba(191,161,95,0.16)}
 .cta-band .wrap{max-width:760px}
-.cta-band h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.9rem,3.4vw,2.8rem);color:var(--navy);line-height:1.15;margin-bottom:14px}
-.cta-band p{color:var(--muted);font-weight:300;margin-bottom:30px}
+.cta-band h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.9rem,3.4vw,2.8rem);color:#fff;line-height:1.15;margin-bottom:14px}
+.cta-band p{color:rgba(255,255,255,0.68);font-weight:300;margin-bottom:30px}
 .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .cta-actions a{padding:15px 32px;font-size:11.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:all .3s}
-.cta-actions .a1{background:var(--navy-deep);color:#fff;border:1px solid var(--navy-deep)}
-.cta-actions .a1:hover{background:transparent;color:var(--navy-deep)}
-.cta-actions .a2{background:transparent;color:var(--navy-deep);border:1px solid var(--navy-deep);display:inline-flex;align-items:center;gap:9px}
-.cta-actions .a2:hover{background:var(--navy-deep);color:#fff}
+.cta-actions .a1{background:var(--gold);color:var(--navy-deep);border:1px solid var(--gold)}
+.cta-actions .a1:hover{background:transparent;color:var(--gold-bright);border-color:var(--gold-bright)}
+.cta-actions .a2{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.55);display:inline-flex;align-items:center;gap:9px}
+.cta-actions .a2:hover{background:#fff;color:var(--navy-deep)}
 .cta-actions .a2 svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6}
 
 .faq{background:var(--navy)}
